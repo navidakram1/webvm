@@ -9659,4 +9659,3 @@ function assignHeaps(tmp0){
 	HEAPF32=new Float32Array(tmp0);
 	HEAPF64=new Float64Array(tmp0);
 }
-cxCoreInit.promise.then(function(){cxCoreInit();}).catch(function(e){postMessage({type:", m, ",value:e.toString()});})

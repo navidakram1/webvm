@@ -38,6 +38,9 @@ const config = {
 				'report-uri': ['.']
 			}
 		},
+		alias: {
+			'types': 'types/'
+		}
 	},
 	preprocess: vitePreprocess()
 };

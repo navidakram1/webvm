@@ -56,28 +56,15 @@ function processHtmlFiles(files) {
 }
 
 function appendToCxcore() {
-  console.log();
-  console.log("adding init call to cxcore");
-  console.log();
-  const cxcoreFile = path.resolve(__dirname, 'cxcore.js');
-  exec("tail -n 1 cxcore.js", (err, stdout) => {
-    if (err) {
-      console.error("Failed to exec tail command: ", err);
-      return;
-    }
-    const lastLine = stdout.trim();
-    const content = 'cxCoreInit.promise.then(function(){cxCoreInit();}).catch(function(e){postMessage({type:", m, ",value:e.toString()});})';
+  const cxcoreFile = path.resolve(directoryPath, 'cxcore.js');
+  const content = 'cxCoreInit.promise.then(function(){cxCoreInit();}).catch(function(e){postMessage({type:", m, ",value:e.toString()});})';
 
-    if (lastLine == content) {
-      console.log("All good! cxcore.js already contains correct last line, skipped");
-    } else {
-      try {
-        fs.appendFileSync(cxcoreFile, content);
-      } catch (err) {
-        console.error("Failed to append: ", err);
-      }
-    }
-  });
+  try {
+    fs.appendFileSync(cxcoreFile, content);
+    console.log(`\nappended cxCoreInit() to build/cxcore.js`);
+  } catch (err) {
+    console.error("Failed to append: ", err);
+  }
 }
 
 function extractScript(fileContent) {
