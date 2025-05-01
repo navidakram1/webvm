@@ -206,7 +206,7 @@ function __ZN11CheerpXCore16handleInitSystemEjjPN6client10Uint8ArrayES2_(Larg0,L
 			tmp3=HEAP8;
 			Lgeptoindexphi17=HEAP32[4+Lgeptoindex6>>2]|0;
 			Lgeptoindex6=Lgeptoindexphi17;
-			tmp3={type:3,vgaRamOffset:Lgeptoindex6,vgaDevice:((352+(HEAP32[16+tmp4>>2]|0)|0)|0)};
+			tmp3={type:5,vgaRamOffset:Lgeptoindex6,vgaDevice:((352+(HEAP32[16+tmp4>>2]|0)|0)|0)};
 			postMessage(tmp3);
 			return;
 		}
@@ -259,22 +259,22 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 	Lgeptoindex17=2119872|0;
 	tmp1=2120020|0;
 	a:switch((Larg0.type)|0){
-		case 8:
+		case 3:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=Larg0.mhz;
 		tmp9=Larg0.mem;
 		tmp4=Larg0.bios;
 		__ZN11CheerpXCore16handleInitSystemEjjPN6client10Uint8ArrayES2_(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,tmp4,Larg0.vgaBios);
 		break a;
-		case 2:
+		case 4:
 		__ZN11CheerpXCore17handleStartSystemEv();
 		break a;
-		case 7:
+		case 9:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=HEAP32[16+(HEAP32[811182]|0)>>2]|0;
 		__ZN10SystemData11scheduleIrqEjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,0,Larg0.value);
 		__ZN7CoreCtx8setStateENS_5STATEE(HEAP32[12+(HEAP32[811182]|0)>>2]|0,0);
 		__ZN11CheerpXCore8scheduleEv();
 		break a;
-		case 9:
+		case 10:
 		tmp4=2119796|0;
 		if(((Larg0.diskType)|0)!==0){
 			if(((Larg0.diskType)|0)===1){
@@ -335,54 +335,54 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		}
 		___assert_fail(Lgeptoindex17,tmp5,396,tmp6);
 		;
-		case 13:
+		case 14:
 		__ZN8Debugger9attachHudEv((__ZN8Debugger11getInstanceEv()|0)|0);
-		tmp4={type:14, intWrapper: ((3242652|0)|0), statType: 0, statName: "ByteCode"};
+		tmp4={type:15, intWrapper: ((3242652|0)|0), statType: 0, statName: "ByteCode"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241484|0)|0), statType: 0, statName: "JIT - Queue Length"};
+		tmp4={type:15, intWrapper: ((3241484|0)|0), statType: 0, statName: "JIT - Queue Length"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241504|0)|0), statType: 0, statName: "JIT - Cold"};
+		tmp4={type:15, intWrapper: ((3241504|0)|0), statType: 0, statName: "JIT - Cold"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241620|0)|0), statType: 0, statName: "JIT - Invalid"};
+		tmp4={type:15, intWrapper: ((3241620|0)|0), statType: 0, statName: "JIT - Invalid"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244724|0)|0), statType: 0, statName: "JIT - FP80 failed"};
+		tmp4={type:15, intWrapper: ((3244724|0)|0), statType: 0, statName: "JIT - FP80 failed"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241508|0)|0), statType: 0, statName: "JIT - Rejected"};
+		tmp4={type:15, intWrapper: ((3241508|0)|0), statType: 0, statName: "JIT - Rejected"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3249392|0)|0), statType: 0, statName: "JIT - Stub Recompile"};
+		tmp4={type:15, intWrapper: ((3249392|0)|0), statType: 0, statName: "JIT - Stub Recompile"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241516|0)|0), statType: 0, statName: "JIT - Pending / Queue"};
+		tmp4={type:15, intWrapper: ((3241516|0)|0), statType: 0, statName: "JIT - Pending / Queue"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241512|0)|0), statType: 0, statName: "JIT - Valid"};
+		tmp4={type:15, intWrapper: ((3241512|0)|0), statType: 0, statName: "JIT - Valid"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3242648|0)|0), statType: 0, statName: "JIT - Re-enter"};
+		tmp4={type:15, intWrapper: ((3242648|0)|0), statType: 0, statName: "JIT - Re-enter"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244720|0)|0), statType: 0, statName: "JIT - Exits"};
+		tmp4={type:15, intWrapper: ((3244720|0)|0), statType: 0, statName: "JIT - Exits"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244716|0)|0), statType: 0, statName: "JIT - Call Failed"};
+		tmp4={type:15, intWrapper: ((3244716|0)|0), statType: 0, statName: "JIT - Call Failed"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244760|0)|0), statType: 0, statName: "JIT - Dyn Call Helper"};
+		tmp4={type:15, intWrapper: ((3244760|0)|0), statType: 0, statName: "JIT - Dyn Call Helper"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244756|0)|0), statType: 0, statName: "JIT - Stub Ready"};
+		tmp4={type:15, intWrapper: ((3244756|0)|0), statType: 0, statName: "JIT - Stub Ready"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244712|0)|0), statType: 0, statName: "JIT - Extra Line Flush"};
+		tmp4={type:15, intWrapper: ((3244712|0)|0), statType: 0, statName: "JIT - Extra Line Flush"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3244708|0)|0), statType: 0, statName: "JIT - Preserve Assumption Failed"};
+		tmp4={type:15, intWrapper: ((3244708|0)|0), statType: 0, statName: "JIT - Preserve Assumption Failed"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3249388|0)|0), statType: 0, statName: "JIT - Possible SMC"};
+		tmp4={type:15, intWrapper: ((3249388|0)|0), statType: 0, statName: "JIT - Possible SMC"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3247852|0)|0), statType: 0, statName: "JIT - Late Failures"};
+		tmp4={type:15, intWrapper: ((3247852|0)|0), statType: 0, statName: "JIT - Late Failures"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3241500|0)|0), statType: 0, statName: "JIT - Caller Pins Overflow"};
+		tmp4={type:15, intWrapper: ((3241500|0)|0), statType: 0, statName: "JIT - Caller Pins Overflow"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3247864|0)|0), statType: 0, statName: "JIT - Ret Failed"};
+		tmp4={type:15, intWrapper: ((3247864|0)|0), statType: 0, statName: "JIT - Ret Failed"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3247916|0)|0), statType: 0, statName: "JIT - Interp Reached"};
+		tmp4={type:15, intWrapper: ((3247916|0)|0), statType: 0, statName: "JIT - Interp Reached"};
 		postMessage(tmp4);
-		tmp4={type:14, intWrapper: ((3248344|0)|0), statType: 0, statName: "JIT - Pinning Conflict"};
+		tmp4={type:15, intWrapper: ((3248344|0)|0), statType: 0, statName: "JIT - Pinning Conflict"};
 		postMessage(tmp4);
 		break a;
-		case 20:
+		case 21:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=Larg0.tid;
 		tmp9=Larg0.fd;
 		tmp10=Larg0.devId;
@@ -404,10 +404,10 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		Lgeptoindexphi3=Larg0.uid;
 		__ZN8LinuxApp25handleFsSpecialFileResultEjPN6client6ObjectEjjjjjjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp4,tmp9,tmp10,tmp11,Lxtraiter,Lgeptoindexphi,Lgeptoindexphi3,Larg0.gid);
 		break a;
-		case 16:
+		case 17:
 		__ZN8LinuxApp19handleFsCloseResultEj(Larg0.value);
 		break a;
-		case 18:
+		case 19:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=Larg0.tid;
 		tmp4=Larg0.path;
 		tmp9=Larg0.devId;
@@ -432,7 +432,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		tmp10=Larg0.inodeId;
 		__ZN8LinuxApp23handleFsCacheListResultEjjjRKN6client6TArrayIPNS0_6StringEEE(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,tmp10,Larg0.files);
 		break a;
-		case 24:
+		case 25:
 		if(((Larg0.value)|0)!==0){
 			__ZN8LinuxApp23handleFsCacheDataResultEj(Larg0.tid);
 			break a;
@@ -516,26 +516,16 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		__ZNSt6vectorISbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEES2_IS5_LS3_1EEED2B7v160000Ev(tmp9);
 		__ZNSt6vectorISbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEES2_IS5_LS3_1EEED2B7v160000Ev(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed);
 		break a;
-		case 27:
+		case 28:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getInstanceEv()|0;
 		tmp9=Larg0.ctxType;
 		__ZN8Debugger9attachCtxE12CONTEXT_TYPEj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,Larg0.value);
 		break a;
-		case 28:
+		case 29:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getInstanceEv()|0;
 		tmp9=Larg0.ctxType;
 		if(!(__ZN8Debugger9detachCtxE12CONTEXT_TYPEj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,Larg0.value)|0))break a;
 		__ZN12AddressSpace13scheduleLaterEv();
-		break a;
-		case 30:
-		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getInstanceEv()|0;
-		tmp9=Larg0.ctxType;
-		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getCtxForIdE12CONTEXT_TYPEj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,Larg0.value)|0;
-		if((L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0)==(0|0))break a;
-		__ZN8Debugger11getInstanceEv()|0;
-		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=HEAP32[(HEAP32[472+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed>>2]|0)>>2]|0;
-		tmp4={type:32, text: __ZN8Debugger7disasAtEP12AddressSpacejjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,Larg0.addr,16)};
-		postMessage(tmp4);
 		break a;
 		case 31:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getInstanceEv()|0;
@@ -544,7 +534,17 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		if((L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0)==(0|0))break a;
 		__ZN8Debugger11getInstanceEv()|0;
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=HEAP32[(HEAP32[472+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed>>2]|0)>>2]|0;
-		tmp4={type:32, text: __ZN8Debugger7disasAtEP12AddressSpacejjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,Larg0.addr,32)};
+		tmp4={type:33, text: __ZN8Debugger7disasAtEP12AddressSpacejjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,Larg0.addr,16)};
+		postMessage(tmp4);
+		break a;
+		case 32:
+		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getInstanceEv()|0;
+		tmp9=Larg0.ctxType;
+		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN8Debugger11getCtxForIdE12CONTEXT_TYPEj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,tmp9,Larg0.value)|0;
+		if((L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0)==(0|0))break a;
+		__ZN8Debugger11getInstanceEv()|0;
+		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=HEAP32[(HEAP32[472+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed>>2]|0)>>2]|0;
+		tmp4={type:33, text: __ZN8Debugger7disasAtEP12AddressSpacejjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,Larg0.addr,32)};
 		postMessage(tmp4);
 		break a;
 		case 51:
@@ -563,16 +563,16 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		case 78:
 		console.log("JIT bisecting not available");
 		break a;
-		case 33:
+		case 34:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=72+tmp4|0;
 		__ZNSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEEC2B7v160000IDnEEPKc(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,2119968|0);
 		tmp9=__ZN10ProcessCtx6createEPS_RKSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEE(0,L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed)|0;
 		__ZNSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEED2Ev(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed);
 		HEAP32[32+tmp9>>2]=2;
-		tmp4={type:34, tid: -1, value: (HEAP32[436+(HEAP32[12+tmp9>>2]|0)>>2]|0)};
+		tmp4={type:35, tid: -1, value: (HEAP32[436+(HEAP32[12+tmp9>>2]|0)>>2]|0)};
 		postMessage(tmp4);
 		break a;
-		case 35:
+		case 36:
 		tmp9=Larg0.tid;
 		tmp10=HEAP32[812351]|0;
 		while(1){
@@ -589,7 +589,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 					HEAP32[tmp5>>2]=tmp9;
 					__ZN7CoreCtx3logEPKcz(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,2119640|0);
 					___setStackPtr(tmp4);
-					tmp4={type:34, tid:(Larg0.tid), value: tmp9};
+					tmp4={type:35, tid:(Larg0.tid), value: tmp9};
 					postMessage(tmp4);
 					break a;
 				}
@@ -600,7 +600,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 			tmp10=HEAP32[92+tmp10>>2]|0;
 			continue;
 		}
-		case 36:
+		case 37:
 		tmp10=Larg0.tid;
 		tmp9=HEAP32[812351]|0;
 		b:if((tmp9|0)!=(0|0)){
@@ -669,7 +669,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		__ZN12LinearBufferD2Ev(tmp11);
 		__ZN12LinearBufferD2Ev(tmp9);
 		break a;
-		case 37:
+		case 38:
 		tmp9=Larg0.tid;
 		tmp10=HEAP32[812351]|0;
 		while(1){
@@ -688,7 +688,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 								tmp10=48+tmp4|0;
 								__ZN13FileDescEntryC2EP8FileDescj(tmp10,(__ZN8FileDesc3getEP5Inodej(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0)|0)|0);
 								L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=__ZN10ProcessCtx11addFileDescERK13FileDescEntryj(tmp9|0,tmp10,0)|0;
-								tmp4={type:34, tid:(Larg0.tid), value: L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed};
+								tmp4={type:35, tid:(Larg0.tid), value: L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed};
 								postMessage(tmp4);
 								__ZN12AddressSpace13scheduleLaterEv();
 								break a;
@@ -723,7 +723,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 							tmp4=__ZN18ExternalSocketNode15messageChannelsE;
 							L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=HEAP32[88+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed>>2]|0;
 							tmp4=tmp4[0+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0].port2;
-							tmp5={type:34, tid:(Larg0.tid), value: tmp4};
+							tmp5={type:35, tid:(Larg0.tid), value: tmp4};
 							postMessage(tmp5,new Array(tmp4));
 							break a;
 						}
@@ -771,7 +771,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		case 48:
 		__ZN14AsmCompileBase19completeModuleAsyncEPN6client6ObjectE(Larg0.wasmModule);
 		break a;
-		case 39:
+		case 40:
 		__ZN17WasmGeneratorBase31completeInstructionsModuleAsyncEPN6client6ObjectE(Larg0.wasmModule);
 		break a;
 		case 49:
@@ -786,7 +786,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		__ZN12TerminalNode8pushCharEj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0,Larg0.value);
 		__ZN12AddressSpace13scheduleLaterEv();
 		break a;
-		case 38:
+		case 39:
 		HEAP32[530032]=Larg0.value;
 		break a;
 		case 87:
@@ -825,10 +825,10 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		__ZN8LinuxApp14setTimezoneEnvEi(~~ +new Date().getTimezoneOffset());
 		__ZN14AsmCompileBase10globalInitEv();
 		__ZN16InterpPrimitives19InitializeMainTableILi32EEEvv();
-		tmp4={type:34, tid:(Larg0.tid), value: 0};
+		tmp4={type:35, tid:(Larg0.tid), value: 0};
 		postMessage(tmp4);
 		break a;
-		case 15:
+		case 16:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=Larg0.tid;
 		tmp9=32+tmp4|0;
 		__ZN8LinuxApp27clientStringToTrackedStringERKN6client6StringE(tmp9,Larg0.mountType);
@@ -841,7 +841,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		case 81:
 		L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed=Larg0.devId;
 		__ZN8LinuxApp19handleDeviceRequestEjj(L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed,Larg0.len);
-		tmp4={type:34, tid:(Larg0.tid), value: 0};
+		tmp4={type:35, tid:(Larg0.tid), value: 0};
 		postMessage(tmp4);
 		break a;
 		case 83:
@@ -890,7 +890,7 @@ function __ZN11CheerpXCore17handleMessageImplEPN6client11CoreMessageE(Larg0){
 		__ZN13PS2Controller11handleKeyUpEj(76+L$poptgep$poptgep$poptgep$poptgep$poptgepsqueezed$poptgepsqueezed$poptgepsqueezed|0,Larg0.value);
 		__ZN12AddressSpace13scheduleLaterEv();
 		break a;
-		case 12:
+		case 13:
 		__ZN13IOTransaction6finishEv((Larg0.ioTransaction)|0);
 		break a;
 		case 57:
@@ -1322,7 +1322,7 @@ function __ZN13WasmGenerator29compileInterpreterModuleAsyncEP25CompiledInterpret
 	tmp2=HEAP8;
 	tmp3=__ZNK10BinaryCode10LinearCode6getBufEv(tmp1)|0;
 	tmp3=tmp3;
-	tmp2={type:47, replyType: 39, start:tmp3, len:(HEAP32[4236+Larg0>>2]|0)};
+	tmp2={type:47, replyType: 40, start:tmp3, len:(HEAP32[4236+Larg0>>2]|0)};
 	postMessage(tmp2);
 	___setStackPtr(LsavedStack);
 }
@@ -1655,7 +1655,7 @@ function __ZN8Debugger15registerContextEP7CoreCtx12CONTEXT_TYPEj(Larg0,Larg1,Lar
 	__ZN11DebuggerCtxC2EP7CoreCtx12CONTEXT_TYPEj(tmp1,Larg1|0,Larg2,Larg3);
 	__ZNSt6vectorI11DebuggerCtx17TrackingAllocatorIS0_L7MEM_TAG1EEE9push_backB7v160000EOS0_(Larg0|0,tmp1);
 	if((HEAP8[16+Larg0>>0]&255)!==0){
-		tmp2={type:25,ctxType:Larg2,value:Larg3,dbgState:(HEAP32[492+Larg1>>2]|0)};
+		tmp2={type:26,ctxType:Larg2,value:Larg3,dbgState:(HEAP32[492+Larg1>>2]|0)};
 		postMessage(tmp2);
 	}
 	___setStackPtr(LsavedStack);
@@ -1678,7 +1678,7 @@ function __ZN8Debugger9attachHudEv(Larg0){
 	tmp5=HEAP32[tmp1>>2]|0;
 	tmp3=HEAP32[tmp2>>2]|0;
 	if((tmp5|0)!=(tmp3|0))while(1){
-		tmp4={type:25,ctxType:(HEAP32[4+tmp5>>2]|0),value:(HEAP32[8+tmp5>>2]|0),dbgState:(HEAP32[492+(HEAP32[tmp5>>2]|0)>>2]|0)};
+		tmp4={type:26,ctxType:(HEAP32[4+tmp5>>2]|0),value:(HEAP32[8+tmp5>>2]|0),dbgState:(HEAP32[492+(HEAP32[tmp5>>2]|0)>>2]|0)};
 		postMessage(tmp4);
 		__ZNSt11__wrap_iterIP11DebuggerCtxEppB7v160000Ev(tmp1)|0;
 		tmp5=HEAP32[tmp1>>2]|0;
@@ -1694,7 +1694,7 @@ function __ZN8Debugger9attachCtxE12CONTEXT_TYPEj(Larg0,Larg1,Larg2){
 		if((HEAP32[492+tmp0>>2]|0)!==0)___assert_fail(2142356|0,2165996|0,1210,2142388|0);
 		;
 		HEAP32[492+tmp0>>2]=1;
-		tmp1={type:26,ctxType:Larg1,value:Larg2,dbgState:1};
+		tmp1={type:27,ctxType:Larg1,value:Larg2,dbgState:1};
 		postMessage(tmp1);
 	}
 }
@@ -1706,7 +1706,7 @@ function __ZN8Debugger9detachCtxE12CONTEXT_TYPEj(Larg0,Larg1,Larg2){
 		if((HEAP32[492+tmp0>>2]|0)!==1)___assert_fail(2142312|0,2165996|0,1222,2142344|0);
 		;
 		HEAP32[492+tmp0>>2]=0;
-		tmp2={type:26,ctxType:Larg1,value:Larg2,dbgState:0};
+		tmp2={type:27,ctxType:Larg1,value:Larg2,dbgState:0};
 		postMessage(tmp2);
 	}
 	return (tmp1^1?1:0)|0;
@@ -2885,7 +2885,7 @@ function __ZN13IDEController12runAsyncReadEjj(Larg0,Larg1,Larg2){
 	tmp0=HEAP32[(__imul((HEAP8[86+Larg0>>0]&255)>>>4&1,12)|0)+48+Larg0>>2]|0;
 	__ZN13IDEController16startTransactionEv(Larg0|0);
 	L$poptgepsqueezed=32+Larg0|0;
-	tmp2={type:10,devId:tmp0,start:Larg1,len:Larg2,ioTransaction:(L$poptgepsqueezed|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed)|0)};
+	tmp2={type:11,devId:tmp0,start:Larg1,len:Larg2,ioTransaction:(L$poptgepsqueezed|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed)|0)};
 	postMessage(tmp2);
 }
 function __ZN13IDEController13runAsyncWriteEv(Larg0){
@@ -2902,7 +2902,7 @@ function __ZN13IDEController13runAsyncWriteEv(Larg0){
 			tmp7=HEAP32[(__imul((tmp7&255)>>>4&1,12)|0)+48+Larg0>>2]|0;
 			__ZN13IDEController16startTransactionEv(Larg0|0);
 			L$poptgepsqueezed=32+Larg0|0;
-			tmp6={type:11,devId:tmp7,start:((((tmp3&65535)<<8)+(tmp2<<24&251658240)|0)+(tmp4&255)<<9),len:((tmp0&255)<<9),ioTransaction:(L$poptgepsqueezed|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed)|0)};
+			tmp6={type:12,devId:tmp7,start:((((tmp3&65535)<<8)+(tmp2<<24&251658240)|0)+(tmp4&255)<<9),len:((tmp0&255)<<9),ioTransaction:(L$poptgepsqueezed|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed)|0)};
 			postMessage(tmp6);
 			return;
 		}
@@ -2938,7 +2938,7 @@ function __ZN11ChunksCache14postBlindWriteE12CORE_MESSAGEjjPhj(Larg0,Larg1,Larg2
 	tmp1=new Array();
 	tmp0=Marg3;
 	+tmp1.push({bufOffset:tmp0,len:Larg4});
-	tmp1={type:Larg0,replyType:21,tid:0,fd:Larg1,fileOffset:Larg2,slices:tmp1};
+	tmp1={type:Larg0,replyType:22,tid:0,fd:Larg1,fileOffset:Larg2,slices:tmp1};
 	postMessage(tmp1);
 }
 function __ZN18CheerpOSFsProvider9CacheNode17postFsListRequestEjRK7InodeId(Larg0,Larg1,Larg2){
@@ -2996,7 +2996,7 @@ function __ZN18CheerpOSFsProvider9CacheNode17postFsListRequestEjRK7InodeId(Larg0
 }
 function __ZN11ChunksCache20closeAndDestroyAsyncEv(Larg0){
 	var tmp0=null;
-	tmp0={type:22,replyType:16,fd:(HEAP32[Larg0>>2]|0),value:((Larg0|0)|0)};
+	tmp0={type:23,replyType:17,fd:(HEAP32[Larg0>>2]|0),value:((Larg0|0)|0)};
 	postMessage(tmp0);
 }
 function __ZN8LinuxApp19getProcessCtxForPidEj(Larg0){
@@ -3056,7 +3056,7 @@ function __ZN11ConsoleNode16postConsoleWriteEPKhj(Larg0,Larg1,Marg1,Larg2){
 }
 function __ZN11ConsoleNode19postConsoleActivateEj(Larg0){
 	var tmp0=null;
-	tmp0={type:29,arg1:Larg0};
+	tmp0={type:30,arg1:Larg0};
 	postMessage(tmp0);
 }
 function __ZN18CheerpOSFsProvider20postCacheNodeRequestEjRKSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEERK7InodeId12CORE_MESSAGE(Larg0,Larg1,Larg2,Larg3,Larg4){
@@ -3097,7 +3097,7 @@ function __ZN18CheerpOSFsProvider20postCacheNodeRequestEjRKSbIcSt11char_traitsIc
 				break;
 			}
 		}
-		tmp4={type:17,replyType:Larg4,tid:Larg1,path:tmp5,devId:(HEAP32[36+Larg0>>2]|0),parentInodeId:(HEAP32[4+Larg3>>2]|0)};
+		tmp4={type:18,replyType:Larg4,tid:Larg1,path:tmp5,devId:(HEAP32[36+Larg0>>2]|0),parentInodeId:(HEAP32[4+Larg3>>2]|0)};
 		postMessage(tmp4);
 		return;
 	}
@@ -3142,7 +3142,7 @@ function __ZN18CheerpOSFsProvider19postFsUnlinkRequestEjRKSbIcSt11char_traitsIcE
 				break;
 			}
 		}
-		tmp4={type:64,replyType:21,tid:Larg1,path:tmp5,devId:(HEAP32[36+Larg0>>2]|0)};
+		tmp4={type:64,replyType:22,tid:Larg1,path:tmp5,devId:(HEAP32[36+Larg0>>2]|0)};
 		postMessage(tmp4);
 		return;
 	}
@@ -3222,7 +3222,7 @@ function __ZN18CheerpOSFsProvider19postFsRenameRequestEjRKSbIcSt11char_traitsIcE
 				break;
 			}
 		}
-		tmp0={type:65,replyType:21,tid:Larg1,oldPath:tmp3,newPath:tmp8,devId:(HEAP32[36+Larg0>>2]|0)};
+		tmp0={type:65,replyType:22,tid:Larg1,oldPath:tmp3,newPath:tmp8,devId:(HEAP32[36+Larg0>>2]|0)};
 		postMessage(tmp0);
 		return;
 	}
@@ -3472,7 +3472,7 @@ function __ZN18CheerpOSFsProvider18postFsMkdirRequestEjRKSbIcSt11char_traitsIcE1
 }
 function __ZNK18CheerpOSFsProvider19postFsFChmodRequestEjj(Larg0,Larg1){
 	var tmp0=null;
-	tmp0={type:61,replyType:21,tid:0,fd:Larg0,permType:Larg1};
+	tmp0={type:61,replyType:22,tid:0,fd:Larg0,permType:Larg1};
 	postMessage(tmp0);
 }
 function __ZN18CheerpOSFsProvider17postFsOpenRequestEjRKSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEEjjj(Larg0,Larg1,Larg2,Larg3,Larg4){
@@ -3520,7 +3520,7 @@ function __ZN18CheerpOSFsProvider17postFsOpenRequestEjRKSbIcSt11char_traitsIcE17
 		if((tmp4|0)!=(0|0))while(1){
 			if((HEAP32[436+tmp4>>2]|0)===(Larg0|0)){
 				tmp3=HEAP32[472+tmp4>>2]|0;
-				tmp2={type:19,replyType:20,tid:Larg0,path:tmp5,flags:Larg2,permType:Larg3,devId:Larg4,uid:(HEAP32[9616+tmp3>>2]|0),gid:(HEAP32[9628+tmp3>>2]|0)};
+				tmp2={type:20,replyType:21,tid:Larg0,path:tmp5,flags:Larg2,permType:Larg3,devId:Larg4,uid:(HEAP32[9616+tmp3>>2]|0),gid:(HEAP32[9628+tmp3>>2]|0)};
 				postMessage(tmp2);
 				return;
 			}
@@ -4483,7 +4483,7 @@ function __ZN8LinuxApp18handleFsOpenResultEjijjjjjjj(Larg0,Larg1,Larg2,Larg3,Lar
 }
 function __ZZZN8LinuxApp17handleBindWrapperEP7CoreCtxj12LinearBufferENK3$_0clES1_jS2_EN9CheerpTmp3RunEii(Larg0,Larg1){
 	var tmp0=null;
-	tmp0={type:34, tid:Larg0, value: Larg1};
+	tmp0={type:35, tid:Larg0, value: Larg1};
 	postMessage(tmp0);
 }
 function __ZN8LinuxApp14updateWakeTimeEddj(Larg0,Larg1,Larg2){
@@ -4516,12 +4516,12 @@ function __ZN12AddressSpace17notifyWorkerClockEjb(Larg0,Larg1){
 }
 function __ZN8LinuxApp13postSysResultEjj(Larg0,Larg1){
 	var tmp0=null;
-	tmp0={type:34, tid:Larg0, value: Larg1};
+	tmp0={type:35, tid:Larg0, value: Larg1};
 	postMessage(tmp0);
 }
 function __ZZN8LinuxApp19handleConnectToPortEjjEN9CheerpTmp3RunEj(Larg0){
 	var tmp0=null;
-	tmp0={type:34, tid:Larg0, value: null};
+	tmp0={type:35, tid:Larg0, value: null};
 	HEAP8[3244744]=1;
 	postMessage(tmp0);
 }
@@ -4530,12 +4530,12 @@ function __ZZZN8LinuxApp19handleConnectToPortEjjENK3$_0clEP7CoreCtxP18ExternalSo
 	tmp2=__ZN18ExternalSocketNode15messageChannelsE;
 	tmp0=HEAP32[88+Larg1>>2]|0;
 	tmp2=tmp2[0+tmp0|0].port2;
-	tmp1={type:34, tid:Larg0, value: tmp2};
+	tmp1={type:35, tid:Larg0, value: tmp2};
 	postMessage(tmp1,new Array(tmp2));
 }
 function __ZZN8LinuxApp18handleFsCreateFileEjjRKSbIcSt11char_traitsIcE17TrackingAllocatorIcL7MEM_TAG7EEEEN9CheerpTmp3RunEjj(Larg0,Larg1){
 	var tmp0=null;
-	tmp0={type:34, tid:Larg0, value:Larg1};
+	tmp0={type:35, tid:Larg0, value:Larg1};
 	postMessage(tmp0);
 }
 function __ZN8LinuxApp14runInterpreterEP7CoreCtx(Larg0){
@@ -4726,17 +4726,17 @@ function __ZN9SystemCtx3RunEv(){
 }
 function __ZN9VGADevice9setHeightEi(Larg0){
 	var tmp0=null;
-	tmp0={type:6, value: Larg0};
+	tmp0={type:8, value: Larg0};
 	postMessage(tmp0);
 }
 function __ZN9VGADevice13setRenderModeE15VGA_RENDER_MODE(Larg0){
 	var tmp0=null;
-	tmp0={type:4, value: Larg0};
+	tmp0={type:6, value: Larg0};
 	postMessage(tmp0);
 }
 function __ZN9VGADevice8setWidthEi(Larg0){
 	var tmp0=null;
-	tmp0={type:5, value: Larg0};
+	tmp0={type:7, value: Larg0};
 	postMessage(tmp0);
 }
 function __ZN6Floppy22scheduleAsyncReadWriteEv(Larg0){
@@ -4769,7 +4769,7 @@ function __ZN6Floppy17runAsyncReadWriteEPS_(Larg0){
 		HEAP8[7+Larg0>>0]=HEAP8[16+Larg0>>0]|0;
 		HEAP8[8+Larg0>>0]=HEAP8[15+Larg0>>0]|0;
 		HEAP8[9+Larg0>>0]=(HEAP8[17+Larg0>>0]|0)+(tmp8+131071>>>9)|0;
-		tmp9={type:((tmp6&12)===8?11|0:10|0),devId:(HEAP32[(__imul(HEAP8[18+Larg0>>0]&255,12)|0)+8+L$poptgep$poptgep3$poptgepsqueezed>>2]|0),start:(((__imul((__imul(tmp3&255,tmp1&255)|0)+(tmp4&255)|0,L$poptgep$poptgep3$poptgep&255)|0)+(tmp0&255)<<9)-512|0),len:tmp8,ioTransaction:(L$poptgepsqueezed26|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed26)|0)};
+		tmp9={type:((tmp6&12)===8?12|0:11|0),devId:(HEAP32[(__imul(HEAP8[18+Larg0>>0]&255,12)|0)+8+L$poptgep$poptgep3$poptgepsqueezed>>2]|0),start:(((__imul((__imul(tmp3&255,tmp1&255)|0)+(tmp4&255)|0,L$poptgep$poptgep3$poptgep&255)|0)+(tmp0&255)<<9)-512|0),len:tmp8,ioTransaction:(L$poptgepsqueezed26|0),value:(__ZNK13IOTransaction12getBufOffsetEv(L$poptgepsqueezed26)|0)};
 		postMessage(tmp9);
 		return;
 	}

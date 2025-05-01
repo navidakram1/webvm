@@ -6,7 +6,7 @@
 	import '$lib/global.css';
 	import '@xterm/xterm/css/xterm.css'
 	import '@fortawesome/fontawesome-free/css/all.min.css'
-	import { networkInterface, startLogin } from '$lib/network.js'
+	import { directSocketsInterface, networkInterface } from '$lib/network.js'
 	import { cpuActivity, diskActivity, cpuPercentage, diskLatency } from '$lib/activities.js'
 	import { introMessage, errorMessage, unexpectedErrorMessage } from '$lib/messages.js'
 	import { displayConfig, handleToolImpl } from '$lib/anthropic.js'
@@ -18,6 +18,7 @@
 	export let cpuActivityEvents = [];
 	export let diskLatencies = [];
 	export let activityEventsInterval = 0;
+
 
 	var term = null;
 	var cx = null;
@@ -309,7 +310,7 @@
 		try
 		{
 			console.debug("calling Linux.create()");
-			cx = await CheerpX.Linux.create({mounts: mountPoints});
+			cx = await CheerpX.Linux.create({mounts: mountPoints, directSocketsInterface: directSocketsInterface});
 			console.debug("Linux.create() finished");
 		}
 		catch(e)

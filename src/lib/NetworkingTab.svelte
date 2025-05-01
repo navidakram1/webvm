@@ -1,5 +1,5 @@
 <script>
-	import { networkData, startLogin, updateButtonData } from '$lib/network.js'
+	import { connectToServer, disconnectFromServer, updateButtonData, networkData } from '$lib/network.js'
 	import { createEventDispatcher } from 'svelte';
 	import PanelButton from './PanelButton.svelte';
 	var dispatch = createEventDispatcher();
@@ -20,5 +20,4 @@
 		<i class='fas fa-circle fa-xs ml-auto {$exitNode ? 'text-green-500' : 'text-amber-500'}' title={$exitNode ? 'Ready' : 'No exit node'}></i>
 	{/if}
 </PanelButton>
-<p>WebVM can connect to the Internet via Tailscale</p>
-<p>Using Tailscale is required since browser do not support TCP/UDP sockets (yet!)</p>
+<p>WebVM can connect to the Internet via TCP through directSockets API!</p>

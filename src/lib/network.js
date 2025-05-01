@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { browser } from '$app/environment'
+import { browser } from '$app/environment';
 
 let authKey = undefined;
 let controlUrl = undefined;
@@ -82,15 +82,6 @@ async function handleCopyIP(event)
 
 export function updateButtonData(state, handleConnect) {
 	switch(state) {
-		case "DISCONNECTED":
-			return {
-				buttonText: "Connect to Tailscale",
-				isClickable: true,
-				clickHandler: handleConnect,
-				clickUrl: null,
-				buttonTooltip: null,
-				rightClickHandler: null
-			};
 		case "DOWNLOADING":
 			return {
 				buttonText: "Loading IP stack...",
@@ -151,3 +142,11 @@ export function updateButtonData(state, handleConnect) {
 export const networkInterface = { authKey: authKey, controlUrl: controlUrl, loginUrlCb: loginUrlCb, stateUpdateCb: stateUpdateCb, netmapUpdateCb: netmapUpdateCb };
 
 export const networkData = { currentIp: null, connectionState: connectionState, exitNode: exitNode, loginUrl: null, dashboardUrl: dashboardUrl }
+
+//
+// IWA test
+// 
+let host = "127.0.0.1";
+let port = 4321;
+let kind = "TCP";
+export const directSocketsInterface = { host, port, kind};
