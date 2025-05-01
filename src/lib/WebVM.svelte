@@ -254,7 +254,6 @@
 				try
 				{
 					blockDevice = await CheerpX.CloudDevice.create(configObj.diskImageUrl);
-					console.debug("finished creating cloudDevice");
 				}
 				catch(e)
 				{
@@ -288,7 +287,6 @@
 		var webDevice = await CheerpX.WebDevice.create("");
 		var documentsDevice = await CheerpX.WebDevice.create("documents");
 		var dataDevice = await CheerpX.DataDevice.create();
-		console.debug("moving to mount points");
 		var mountPoints = [
 			// The root filesystem, as an Ext2 image
 			{type:"ext2", dev:overlayDevice, path:"/"},
@@ -309,9 +307,7 @@
 		];
 		try
 		{
-			console.debug("calling Linux.create()");
-			cx = await CheerpX.Linux.create({mounts: mountPoints, directSocketsInterface: directSocketsInterface});
-			console.debug("Linux.create() finished");
+			cx = await CheerpX.Linux.create({mounts: mountPoints, networkInterface: directSocketsInterface});
 		}
 		catch(e)
 		{
@@ -319,13 +315,11 @@
 			printMessage([e.toString()]);
 			return;
 		}
-		console.debug("registering callbacks");
 		cx.registerCallback("cpuActivity", cpuCallback);
 		cx.registerCallback("diskActivity", hddCallback);
 		cx.registerCallback("diskLatency", latencyCallback);
 		cx.registerCallback("processCreated", handleProcessCreated);
 		term.scrollToBottom();
-		console.debug("Scrolled to bottom");
 		cxReadFunc = cx.setCustomConsole(writeData, term.cols, term.rows);
 		const display = document.getElementById("display");
 		if(display)

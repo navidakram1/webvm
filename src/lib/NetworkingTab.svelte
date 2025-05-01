@@ -20,4 +20,4 @@
 		<i class='fas fa-circle fa-xs ml-auto {$exitNode ? 'text-green-500' : 'text-amber-500'}' title={$exitNode ? 'Ready' : 'No exit node'}></i>
 	{/if}
 </PanelButton>
-<p>WebVM can connect to the Internet via TCP through directSockets API!</p>
+<p>Connect</p>

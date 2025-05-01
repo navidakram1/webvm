@@ -82,6 +82,15 @@ async function handleCopyIP(event)
 
 export function updateButtonData(state, handleConnect) {
 	switch(state) {
+		case "DISCONNECTED":
+			return {
+				buttonText: "Connect to Tailscale",
+				isClickable: true,
+				clickHandler: handleConnect,
+				clickUrl: null,
+				buttonTooltip: null,
+				rightClickHandler: null
+			};
 		case "DOWNLOADING":
 			return {
 				buttonText: "Loading IP stack...",
@@ -146,6 +155,7 @@ export const networkData = { currentIp: null, connectionState: connectionState, 
 //
 // IWA test
 // 
+// let localhost = "localhost";
 let host = "127.0.0.1";
 let port = 4321;
 let kind = "TCP";
