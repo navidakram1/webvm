@@ -148,15 +148,15 @@ export function updateButtonData(state, handleConnect) {
 	}
 }
 
-export const networkInterface = { authKey: authKey, controlUrl: controlUrl, loginUrlCb: loginUrlCb, stateUpdateCb: stateUpdateCb, netmapUpdateCb: netmapUpdateCb };
 
+export const networkInterface = { authKey: authKey, controlUrl: controlUrl, loginUrlCb: loginUrlCb, stateUpdateCb: stateUpdateCb, netmapUpdateCb: netmapUpdateCb };
 export const networkData = { currentIp: null, connectionState: connectionState, exitNode: exitNode, loginUrl: null, dashboardUrl: dashboardUrl }
+
 
 //
 // IWA test
 // 
-// let localhost = "localhost";
-let host = "127.0.0.1";
+let host = "127.0.0.1"; // localhost
 let port = 4321;
-let kind = "TCP";
-export const directSocketsInterface = { host, port, kind};
+export const directSocketsInterface = { host: host, port: port };
+

@@ -11,6 +11,7 @@
 	import { introMessage, errorMessage, unexpectedErrorMessage } from '$lib/messages.js'
 	import { displayConfig, handleToolImpl } from '$lib/anthropic.js'
 	import { tryPlausible } from '$lib/plausible.js'
+	import { TCPProxy } from '$lib/TCPProxy.js'
 
 	export let configObj = null;
 	export let processCallback = null;
@@ -19,6 +20,11 @@
 	export let diskLatencies = [];
 	export let activityEventsInterval = 0;
 
+	// TCP
+	var server = null;
+	var serverBytes = 0;
+	var serverConnections = 0;
+	
 
 	var term = null;
 	var cx = null;
@@ -185,8 +191,54 @@
 		if(display)
 			setScreenSize(display);
 	}
+	async function initProxy() {
+		const proxy = new TCPProxy();
+		proxy.onServerStart = (openInfo) => {
+			console.log(`Server started on ${openInfo.localAddress}:${openInfo.localPort}`);
+		};
+		proxy.onInboundConnect = (id, openInfo) => {
+			console.log(`New inbound connection ${id} from ${openInfo.remoteAddress}:${openInfo.remotePort}`);
+		};
+		proxy.onOutboundConnect = (id, openInfo) => {
+			console.log(`New Outbound connection ${id} to ${openInfo.remoteAddress}:${openInfo.remotePort}`);
+		};
+		proxy.onInboundData = (id, data) => {
+			console.log(`Received data from ${id}: `, data);
+		};
+		proxy.onInboundClose = (id) => {
+			console.log(`Closed inbound connection ${id}`);
+		};
+		proxy.onOutboundClose = (id) => {
+			console.log(`Closed outbound connection ${id}`);
+		};
+		proxy.onError = (type, id, e) => {
+			console.error(`Error in ${type} ${id}: `, e);
+		};
+		await proxy.start('0.0.0.0', {localPort: 33000});
+		return proxy;
+	}
 	async function initTerminal()
 	{
+		const proxy = await initProxy();
+		console.log(`We have proxy`);
+		const outboundID = await proxy.connect('google.com', 80);
+		console.log(`Created direct outbound connection ${outboundID}`);
+		const outboundClient = proxy.outboundConnections.get(outboundID);
+		if (outboundClient) {
+		 console.log(`We have a client`);
+		 const httpRequest =
+		 				"GET / HTTP/1.1\r\n" +
+		 				"Host: google.com\r\n" +
+		 				"Connection: close\r\n\r\n";
+		 await outboundClient.send(httpRequest);
+		 console.log(`Sent data to ${outboundID}`);
+		}
+		outboundClient._reader.releaseLock();
+		console.log(`Released Lock`);
+		await outboundClient.close();
+		// await proxy.close();
+
+
 		const { Terminal } = await import('@xterm/xterm');
 		const { FitAddon } = await import('@xterm/addon-fit');
 		const { WebLinksAddon } = await import('@xterm/addon-web-links');
@@ -241,6 +293,7 @@
 	function handleProcessCreated()
 	{
 		processCount++;
+		console.log("in handleProcessCreated, callback ", processCallback.body);
 		if(processCallback)
 			processCallback(processCount);
 	}
@@ -307,7 +360,7 @@
 		];
 		try
 		{
-			cx = await CheerpX.Linux.create({mounts: mountPoints, networkInterface: directSocketsInterface});
+			cx = await CheerpX.Linux.create({mounts: mountPoints, networkInterface: networkInterface, directSocketsInterface: directSocketsInterface});
 		}
 		catch(e)
 		{
