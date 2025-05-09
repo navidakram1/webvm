@@ -11,6 +11,7 @@ export class TCPSocketClient {
     this._reader = null;
     this._writer;
 
+    // open and closed promise as fields
     this._isOpenedSettled = false;
     this._isClosedSettled = false;
     this._openedPromise = new Promise((resolve, reject) => {
@@ -53,6 +54,7 @@ export class TCPSocketClient {
   async connect(timeoutMs = 5000) {
     try {
       let timeoutID;
+      // added timeout cause it seems to be standard
       const timeoutPromise = new Promise((_, reject) => {
         timeoutID = setTimeout(() => {
           console.log(`Connection to ${this.remoteAddress}:${this.remotePort} timed out after ${timeoutMs}ms`);
@@ -61,9 +63,9 @@ export class TCPSocketClient {
       });
 
       this.socket = new TCPSocket(this.remoteAddress, this.remotePort, this.options);
+      // race between socket.opened and timeout
       const openInfo = await Promise.race([this.socket.opened, timeoutPromise]);
       clearTimeout(timeoutID);
-      // const openInfo = await this.socket.opened;
 
       this._readable = openInfo.readable;
       this._writable = openInfo.writable;
@@ -96,6 +98,12 @@ export class TCPSocketClient {
         const {value, done} = await this._reader.read();
 
         if (done) {
+          // releaseLock() here
+          this._reader.releaseLock();
+          this._reader = null;
+          if (this.onClose) {
+            this.onClose();
+          }
           break;
         }
         if (value && value.byteLength > 0) {
@@ -109,6 +117,9 @@ export class TCPSocketClient {
         this._reader.releaseLock();
         this._reader = null;
       }
+      if (this.onClose) {
+        this.onClose();
+      }
     }
   }
 
@@ -120,6 +131,7 @@ export class TCPSocketClient {
     try {
       this._writer = this._writable.getWriter();
       let buffer = data;
+      // old: for text exchange test, can probably be removed
       if (typeof data === `string`) {
         const encoder = new TextEncoder();
         buffer = encoder.encode(data);
@@ -134,23 +146,28 @@ export class TCPSocketClient {
       if (this.onError) {
         this.onError(e);
       }
-      throw error;
+      throw e;
     }
   }
 
   async close() {
-    try {
-      if (!this.socket) {
-        throw new Error(`Socket is not connected`);
-      }
+    if (!this.socket) {
+      throw new Error(`Socket is not connected`);
+    }
 
+    try {
       if (this._isClosedSettled) {
         return this._closedPromise;
       }
 
-      // if streams are locked err
-      if ((this._readable && this._readable.locked) || (this._writable && this._writable.locked)) {
-        throw new Error(`Cannot close socket while streams are locked`);
+      // try to handle leftover locks if necessary, tho should have been handled in startReading's loop and send()
+      if (this._reader) {
+        this._reader.releaseLock();
+        this._reader = null;
+      }
+      if (this._writer) {
+        this._writer.releaseLock();
+        this._writer = null;
       }
 
       await this.socket.close();
@@ -166,7 +183,7 @@ export class TCPSocketClient {
         this.onError(e);
       }
       
-      throw error;
+      throw e;
     }
   }
 }

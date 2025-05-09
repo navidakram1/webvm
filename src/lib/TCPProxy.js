@@ -3,8 +3,8 @@ import { TCPSocketClient  } from "./TCPSocketClient";
 export class TCPProxy {
   constructor() {
     this.server = null;
-    this.inboundConnections = new Map();  // clientID -> TCPSocketClient
-    this.outboundConnections = new Map(); // clientID -> TCPSocketClient
+    this.inboundConnections = new Map();  // inboundID -> TCPSocketClient
+    this.outboundConnections = new Map(); // outboundID -> TCPSocketClient
     this.forwardingPairs = new Map();     // inboundID -> outboundID
     this.reverseForwardingPairs = new Map(); // outboundID -> inboundID
     this._reader = null;
@@ -28,12 +28,16 @@ export class TCPProxy {
 
   async start(localAddress, options = {}) {
     try {
-      this.server = new TCPServerSocket(localAddress, options); // localAddress instead of ::1 but testing for now
+      this.server = new TCPServerSocket(localAddress, options);
       console.log(`Server created: `, this.server);
-      // console.log(`opened properties: `, Object.getOwnPropertyDescriptor(this.server, 'opened'));
-      // console.log(`server properties: `, Object.getOwnPropertyDescriptor(this.server));
+
+
       const openInfo = await this.server.opened;
       const { readable, localAddress: boundAddress, localPort } = openInfo;
+
+      // this logs undefined, not sure what to think of that... but seems to work anyways?
+      console.log(`opened properties: `, Object.getOwnPropertyDescriptor(this.server, 'opened'));
+      console.log(`server properties: `, Object.getOwnPropertyDescriptor(this.server));
 
       console.log(`TCPProxy started on ${boundAddress}:${localPort}`);
       if (this.onServerStart) {
@@ -51,7 +55,7 @@ export class TCPProxy {
               console.log(`Server stopped accepting connections`);
               break;
             }
-            this._handleIncomingConnection(incomingSocket);
+            this._handleIncomingConnection(incomingSocket); // can get client ID here if we have use for that later
           }
         } catch (e) {
           console.error(`Error accepting connections: `, e);
@@ -89,7 +93,7 @@ export class TCPProxy {
       inboundClient.onClose = () => {
         this._handleInboundClose(connectionID);
       };
-      inboundClient.onError = (error) => {
+      inboundClient.onError = (e) => {
         if (this.onError) {
           this.onError('inbound', connectionID, e);
         }
@@ -120,17 +124,20 @@ export class TCPProxy {
     }
 
     const outboundID = this.forwardingPairs.get(inboundID);
-    if (outboundID) {
-      const outboundClient = this.outboundConnections.get(outboundID);
-      if (outboundClient) {
-        outboundClient.send(data).catch((e) => {
-          console.error(`Error forwarding data to outbound connection ${outboundID}`);
-          if (this.onError) {
-            this.onError(`outbound`, outboundID, e);
-          }
-        });
-      }
+    if (!outboundID) {
+      return;
     }
+    const outboundClient = this.outboundConnections.get(outboundID);
+    if (!outboundClient) {
+      return;
+    }
+
+    outboundClient.send(data).catch((e) => {
+      console.error(`Error forwarding data to outbound connection ${outboundID}`);
+      if (this.onError) {
+        this.onError(`outbound`, outboundID, e);
+      }
+    });
   }
 
   _handleOutboundData(outboundID, data) {
@@ -142,21 +149,23 @@ export class TCPProxy {
     }
 
     const inboundID = this.reverseForwardingPairs.get(outboundID);
-    if (inboundID) {
-      const inboundClient = this.inboundConnections.get(inboundID);
-      if (inboundClient) {
-        inboundClient.send(data).catch((e) => {
-          console.error(`Error forward data to inbound connection ${inboundID}`);
-          if (this.onError) {
-            this.onError(`inbound`, inboundID, e);
-          }
-        });
-      }
+    if (!inboundID) {
+      return;
     }
+    const inboundClient = this.inboundConnections.get(inboundID);
+    if (!inboundClient) {
+      return;
+    }
+
+    inboundClient.send(data).catch((e) => {
+      console.error(`Error forward data to inbound connection ${inboundID}`);
+      if (this.onError) {
+        this.onError(`inbound`, inboundID, e);
+      }
+    });
   }
 
   _handleInboundClose(inboundID) {
-    const inboundClient = this.inboundConnections.get(inboundID);
     this.inboundConnections.delete(inboundID);
     console.log(`Inbond connection ${inboundID} closed`);
 
@@ -166,21 +175,22 @@ export class TCPProxy {
 
     // close pair
     const outboundID = this.forwardingPairs.get(inboundID);
-    if (outboundID) {
-      const outboundClient = this.outboundConnections.get(outboundID);
-      if (outboundClient) {
-        outboundClient.close().catch((e) => {
-          console.error(`Error closing outbound connection ${outboundID}`);
-        });
-      }
-
-      this.forwardingPairs.delete(inboundID);
-      this.reverseForwardingPairs.delete(outboundID);
+    if (!outboundID) {
+      return;
     }
+    const outboundClient = this.outboundConnections.get(outboundID);
+    if (!outboundClient) {
+      return;
+    }
+    outboundClient.close().catch((e) => {
+      console.error(`Error closing outbound connection ${outboundID}`);
+    });
+
+    this.forwardingPairs.delete(inboundID);
+    this.reverseForwardingPairs.delete(outboundID);
   }
 
   _handleOutboundClose(outboundID) {
-    const outboundClient = this.outboundConnections.get(outboundID);
     this.outboundConnections.delete(outboundID);
     console.log(`Outbound connection ${outboundID} closed`);
 
@@ -191,16 +201,18 @@ export class TCPProxy {
     // close pair
     const inboundID = this.reverseForwardingPairs.get(outboundID);
     if (inboundID) {
-      const inboundClient = this.inboundConnections.get(inboundID);
-      if (inboundClient) {
-        inboundClient.close().catch((e) => {
-          console.error(`Error closing inbound connection ${inboundID}`, e);
-        });
-      }
-
-      this.reverseForwardingPairs.delete(outboundID);
-      this.forwardingPairs.delete(inboundID);
+      return;
     }
+    const inboundClient = this.inboundConnections.get(inboundID);
+    if (!inboundClient) {
+      return;
+    }
+    inboundClient.close().catch((e) => {
+      console.error(`Error closing inbound connection ${inboundID}`, e);
+    });
+
+    this.reverseForwardingPairs.delete(outboundID);
+    this.forwardingPairs.delete(inboundID);
   }
 
   async connect(remoteAddress, remotePort, options = {}) {
@@ -275,7 +287,6 @@ export class TCPProxy {
     return Promise.resolve();
   }
 
-  // need to rework so that we releaseLock() before closing() server reader. Current structure sucks for that
   async close() {
     console.log(`Closing TCP proxy`);
     for (const [id, client] of this.inboundConnections.entries()) {
@@ -293,6 +304,7 @@ export class TCPProxy {
       }
     }
 
+    // clear maps
     this.inboundConnections.clear();
     this.outboundConnections.clear();
     this.forwardingPairs.clear();
@@ -308,6 +320,11 @@ export class TCPProxy {
     }
 
     console.log("TCP Proxy closed");
+  }
+
+  // helper function for testing mockSocket (avoids using _prefixed internal functions in test)
+  acceptConnection(socket) {
+    return this._handleIncomingConnection(socket);
   }
   
 }
