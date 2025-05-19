@@ -155,11 +155,8 @@ export class TCPSocketClient {
       throw new Error(`Socket is not connected`);
     }
 
-    try {
-      if (this._isClosedSettled) {
-        return this._closedPromise;
-      }
 
+    try {
       // try to handle leftover locks if necessary, tho should have been handled in startReading's loop and send()
       if (this._reader) {
         this._reader.releaseLock();
@@ -170,7 +167,14 @@ export class TCPSocketClient {
         this._writer = null;
       }
 
-      await this.socket.close();
+      // returning this before trying to handle leftover locks errs because close before releaseLock(). I thought I had made it so it'd take care of that but guess not
+      // just try to release before fixes it
+      if (this._isClosedSettled) {
+        return this._closedPromise;
+      }
+
+
+      await this.socket.closed;
       if (this.onClose) {
         this.onClose();
       }

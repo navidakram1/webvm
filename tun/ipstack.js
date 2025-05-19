@@ -1,1 +1,1559 @@
-"use strict";/*Compiled using Cheerp (R) by Leaning Technologies Ltd*/var JX=Math.imul;var JY=Math.fround;var oSlot=0;var nullArray=[null];var nullObj={d:nullArray,o:0};function Kn(p){return (typeof self==='object')?fetch(p).then(r=>r.arrayBuffer()):new Promise((y,n)=>{import('fs').then(r=>r.readFile(p,(e,d)=>{if(e)n(e);else y(d);}));});}var Kf=1048576|0;var CHEERP_ENV=null,CHEERP_ARGV=null;function Fm(){Fh();}function Fl(){Fi();}function Fk(){c0=Fj();}function Fj(){return new Array();}function Fi(){var g=null;g=new Uint8Array(16);cA=g;dK=16;g=I_(16);cB=g;}function Fh(){var g=null;g=new Uint8Array(16);ch=g;dJ=16;g=I9(16);ci=g;}function JD(){var i=null,g=0;i=rD();g=oSlot;oSlot=g;return i;}function Fb(g,h){rE(g,h);}function JC(o,p,m,k,i){var g=0;g=en(m)|0;o[p].a1=i;g=sr(ek(o,p)|0,o[p].a0|0,g,k)|0;if((g|0)!==0)h_(o[p],g);return g|0;}function JB(i,j,g){i[j].a2=g;yD(ek(i,j)|0,i[j].a0|0);}function JE(x,v){var o=null,m=null,k=0,t=null,s=null,q=0,g=0,i=0;o=cD();m=-32+o|0;bc(m);k=16+m|0;jw(k,v.length);if(((v.length)|0)>0){g=0;while(1){t=jv(v,(+(g|0)));i=oSlot;s=a;q=ju(k,g)|0;s[q]=t[i]|0;g=g+1|0;if((g|0)<((v.length)|0))continue;break;}}g=x.a0|0;i=m|0;fE(i,k);g=yF(g,i)|0;dA(i);dA(k);bc(o);return g|0;}function JA(g,h){Fb(g,h);}function Jz(g){n0(g.a0|0);}function Jy(g){nZ(g.a0|0);}function Jx(i,g){return (oz(i.a0|0,g)|0)<<24>>24|0;}function Jw(k,l,i){var g=0;g=ou(k[l].a0|0)|0;if((g&255)===0){k[l].a3=i;zC(ek(k,l)|0,k[l].a0|0);}return g<<24>>24|0;}function Jv(g){jy(g);}function Ju(){var i=null,g=0;i=zG();g=oSlot;oSlot=g;return i;}function Fa(g,h){zH(g,h);}function Jt(i,g){return (w7(i.a1|0,g)|0)<<24>>24|0;}function Js(i,j,g){i[j].a0=g;wb(iN(i,j)|0,i[j].a1|0);}function Jr(z,y,x,v){var o=null,i=0,t=0,s=null,q=0,k=null,m=0,g=0;o=cD();k=-16+o|0;bc(k);m=en(x)|0;i=k|0;jw(i,y.length);if(((y.length)|0)>0){g=0;while(1){k=jv(y,(+(g|0)));t=oSlot;s=a;q=ju(i,g)|0;s[q]=k[t]|0;g=g+1|0;if((g|0)<((y.length)|0))continue;break;}}m=Ai(z.a1|0,i,m,v)|0;dA(i);bc(o);return m|0;}function Jq(g,h){Fa(g,h);}function Jp(g){jx(g);}function E$(i){var g=0;g=i.a0|0;if((g|0)!=(0|0))xg(g);}function jy(g){E$(g);}function Aj(i){var g=0;g=i.a1|0;if((g|0)!=(0|0))w3(g);}function jx(g){Aj(g);}function jv(i,g){oSlot=0+~~g|0;return i;}function iN(g,h){var i=null;if(g!==nullArray||h!==0){i=cB;return (JX(h,8))-(JX(0,8))>>3|0;}return  -1|0;}function z7(o,m,n,k,i,g){var t=0,s=null,q=0;t=en(i)|0;s=z6(o);q=oSlot;z5(s[q],m,n,k,t,g);}function z6(i){var k=0,g=null;k=dK|0;if((i|0)>-1){if((k|0)>(i|0)){g=cA;if((g[i]&1)!==0){g=cB;oSlot=0+i|0;return g;}oSlot=0;return nullArray;}oSlot=0;return nullArray;}oSlot=0;return nullArray;}function z5(o,m,n,k,i,g){var s=0,q=null;s=jp(m,n)|0;a:{if((k|0)!==0)if(!(s)){q=d8(m,n,k);o.a0(q,i,g);break a;}o.a0(null,i,g);}}function jp(g,h){var i=0;i=(g.buffer===__heap);if(i){i=h;return ((i|0)===0?1:0)|0;}return 0|0;}function d8(k,l,i){var m=0,g=null;m=l;g=k;g=g;if((i|0)!==0){if((m|0)===0)if(((g.length)|0)===(i|0))return g;return g.subarray((+(m>>>0)),(+(m+i>>>0)));}if((m|0)===0)return g;return g.subarray((+(m>>>0)));}function zH(k,l){var i=0,g=null;i=iN(k,l)|0;g=cB;jx(g[i]);g=cA;g[i]=0;}function zG(){var g=0,k=null,i=null;g=zF()|0;k=cB;zE(k[g]);i=cA;i[g]=1;oSlot=0+g|0;return k;}function zF(){var k=0,i=null,g=0;k=dK|0;a:{if((k|0)>1){i=cA;g=1;while(1){if((i[g]&1)!==0){g=g+1|0;if((g|0)===(k|0))break a;continue;}break;}}else{g=1;}if((g|0)!==(k|0))return g|0;}g=k<<1;dK=g;i=cB;if(i!==nullArray||0!==0)i=Jb(i,i.length,g/8|0);else i=I_(g/8|0);cB=i;g=dK|0;i=cA;if(i!==nullArray||0!==0)i=(function(){var __old__=i;var __ret__=new Uint8Array(g/1|0);__ret__.set(__old__.subarray(0, Math.min(__ret__.length,__old__.length)));return __ret__;})();else i=new Uint8Array(g/1|0);cA=i;return k|0;}function zE(g){var k=null,i=0;k=a;i=c9(32)|0;xe(i|0);g.a1=(i|0);}function ek(g,h){var i=null;if(g!==nullArray||h!==0){i=ci;return (JX(h,16))-(JX(0,16))>>4|0;}return  -1|0;}function ze(o,m,k,i,g){var s=null,q=0;s=fH(o);q=oSlot;zd(s[q],m|0,k,i,g);}function fH(g){var k=0,i=null;k=dJ|0;if((g|0)>-1){if((k|0)>(g|0)){i=ch;if((i[g]&1)!==0){i=ci;oSlot=0+g|0;return i;}oSlot=0;return nullArray;}oSlot=0;return nullArray;}oSlot=0;return nullArray;}function zd(o,m,k,i,g){var t=null,s=null,q=0;t=[0];t[0]=(m|0);s=v6(t,0);q=oSlot;o.a3(Object.create(IpStack.TCPSocket.prototype,{this:{value:{d:s,o:q}}}),k,i,g<<24>>24);}function v6(i,j){var g=0,m=null,k=null;g=iM()|0;m=ci;v4(m[g],i[j]|0);k=ch;k[g]=1;oSlot=0+g|0;return m;}function iM(){var k=0,i=null,g=0;k=dJ|0;a:{if((k|0)>1){i=ch;g=1;while(1){if((i[g]&1)!==0){g=g+1|0;if((g|0)===(k|0))break a;continue;}break;}}else{g=1;}if((g|0)!==(k|0))return g|0;}g=k<<1;dJ=g;i=ci;if(i!==nullArray||0!==0)i=Ja(i,i.length,g/16|0);else i=I9(g/16|0);ci=i;g=dJ|0;i=ch;if(i!==nullArray||0!==0)i=(function(){var __old__=i;var __ret__=new Uint8Array(g/1|0);__ret__.set(__old__.subarray(0, Math.min(__ret__.length,__old__.length)));return __ret__;})();else i=new Uint8Array(g/1|0);ch=i;return k|0;}function v4(i,g){i.a0=(g|0);i.a1=null;i.a2=null;}function yj(k,i,j,g){var o=null,m=0;o=fH(k);m=oSlot;yi(o[m],i,j,g);}function yi(k,i,j,g){var o=0,m=null;o=jp(i,j)|0;a:{if((g|0)!==0)if(!(o)){m=d8(i,j,g);k.a2(m);break a;}k.a2(null);}}function h_(i,g){var k=null;k=i.a1;i.a1=null;k(g);}function r5(i,g){var m=null,k=0;m=fH(i);k=oSlot;h_(m[k],g);}function rE(k,l){var i=0,g=null;i=ek(k,l)|0;g=ci;jy(g[i]);g=ch;g[i]=0;}function rD(){var g=0,k=null,i=null;g=iM()|0;k=ci;rC(k[g]);i=ch;i[g]=1;oSlot=0+g|0;return k;}function rC(g){var k=null,i=0;k=a;i=c9(96)|0;o2(i|0);g.a0=(i|0);g.a1=null;g.a2=null;}function rB(k){var i=null,g=null;i=hY();g=hY();k.a0=new Promise(function(__f,__r){i.inner=__f;g.inner=__r;});;k.a1=i.inner;k.a2=g.inner;}function hY(){return new Object();}function fd(){return ~~ +performance.now()|0;}function ry(i,j,g){var k=null;k=new Uint8Array(d8(i,j,g));i9(k);}function rw(){+setInterval(rv(),10);}function rv(){var g=null,i=null;g={a0:null,a1:null,a2:null};rt(g);i=rs(g);rr(g);return i;}function rt(g){rl(g);}function rs(i){var g=null;if(i.a1!==null){g=[{a0:null,a1:null}];g[0].a0=i.a1;g[0].a1=i.a2;g=Kc(rp,g[0]);rn(i.a0,g);i.a1=null;}return i.a0;}function rr(i){var g=null;g=i.a1;if(g!==null)g(i.a2);}function rp(g){g.a0(g.a1);}function rn(k,i){var g=null;g=jD;if(g!==null){g.set(k,i);return;}g=new Map();jD=g;g.set(k,i);}function rl(g){rk(g);}function rk(g){var i=null;i=ri;g.a0=i;g.a1=null;g.a2=null;}function ri(){rh();}function rh(){ww();}function Jn(g){rg();pa();o_();}function Jm(B){var x=null,g=null,v=0,q=0,t=null,z=0,y=null,o=null,i=0,k=0,m=0,s=null;x=cD();g=-104+x|0;bc(g);v=88+g|0;cJ(v,B.localIp);q=72+g|0;qj(q);o=B.ipMap;if(o!==undefined){t=Object.keys(o);if(((t.length)|0)>0){i=56+g|0;k=40+g|0;m=0;while(1){s=e5(t,(+(m|0)));z=oSlot;s=s[z];y=o[s];cJ(i,s);cJ(k,y);qf(32+g|0,q,i,k);bH(k);bH(i);m=m+1|0;if((m|0)<((t.length)|0))continue;break;}}}i=16+g|0;hx(i);o=B.dnsIp;if(undefined!==o){k=g|0;cJ(k,B.dnsIp);qe(i,k)|0;bH(k);}rd(v,q,i);bH(i);qd(q);bH(v);bc(x);}function cJ(i,g){pj(i|0,g);}function e5(i,g){oSlot=0+~~g|0;return i;}function pj(q,o){var m=0,k=0,g=0,i=0;hx(q|0);m=o.length;if((m|0)!==0){k=0;while(1){i=o.charCodeAt((+(k>>>0)));if(i-57344>>>0<4294965248){g=i;}else if(i>>>0<56320){g=i<<10&1047552;}else{g=(i&1023|g)+65536|0;}k=k+1|0;a:{if((k|0)!==(m|0))if((i&56320|0)===55296)break a;if(g>>>0<128){i=g;}else if(g>>>0<2048){ck(q|0,g>>>6|192);i=g&63|128;}else if(g>>>0<65536){ck(q|0,g>>>12|224);ck(q|0,g>>>6&63|128);i=g&63|128;}else{ck(q|0,g>>>18|240);ck(q|0,g>>>12&63|128);ck(q|0,g>>>6&63|128);i=g&63|128;}ck(q|0,i);}if((k|0)!==(m|0))continue;break;}}}function Jl(){ql();}function Jk(o){var k=0,g=0,m=0,i=null;k=o.length;g=a8(0,k)|0;if((g|0)!=(0|0)){i=a;m=c[4+g>>2]|0;i=d8(i,m,k);i.set(o);ph(g);}}function Jj(g){i9=g;}function Ji(o){var k=null,i=null,g=0,m=0;k=cD();i=-16+k|0;bc(i);g=i|0;cJ(g,o);m=o5(g)|0;bH(g);bc(k);return m|0;}function Jh(x){var t=null,s=0,v=0,k=0,o=0,q=null,g=null,m=0,i=0;t=cD();q=-16+t|0;bc(q);s=q|0;o4(s,x);q=a;v=co(s)|0;g=String();m=0;while(1){k=q[v+m|0]|0;if((k&255)!==0){o=k&255;if(k<<24>-16777216){i=o;}else if((k&255)<192){i=(o&63)+(i<<6)|0;}else if((k&255)<224){i=o&31;}else if((k&255)<240){i=o&15;}else{i=o&7;}m=m+1|0;a:{if((m|0)!==-1)if((q[v+m|0]&192)===128)break a;if(i>>>0<65536)g=g.concat(String.fromCharCode(i));else{g=g.concat(String.fromCharCode(i-65536>>>10|55296));g=g.concat(String.fromCharCode(i&1023|56320));}}if((m|0)!==-1)continue;bH(s);bc(t);return g;}break;}bH(s);bc(t);return g;}function hh(i,g){var o=null,m=0,k=null;k=c0;o=hg(k,(+(i|0)));m=oSlot;k=o[m];o[m]=null;k(g);}function hg(i,g){oSlot=0+~~g|0;return i;}function Jg(t){var m=null,k=0,s=null,q=null,o=0,g=null,i=0;m=cD();g=-16+m|0;bc(g);k=g|0;cJ(k,t);g={a0:null,a1:null,a2:null};rB(g);i=c0.indexOf(null);if((i|0)<0){i=c0.length;+c0.push(g.a1);}else{s=c0;q=hg(s,(+(i|0)));o=oSlot;q[o]=g.a1;}pf(k,i);g=g.a0;bH(k);bc(m);return g;}function tF(o,m,k){var i=null,g=null;g=[0];g[0]=(m|0);i=new Int32Array(2);i[0]=k;i[1]=o;g=tE(i,1,g,0,i,0);tD(g);;}function tE(o,p,m,n,k,l){var q=0,g=null,i=null;g=l9;if(g!==null)return ii(g,o,p,m,n,k,l);g={a0:nullArray,a1:nullArray,i2:0};g.i2=16;i=I8(16);g.a0=i;q=g.i2|0;i=new Uint8Array(q/1|0);g.a1=i;l9=g;return ii(g,o,p,m,n,k,l);}function tD(k){var o=0,m=0,i=null,g=null;o=k.a4|0;g=a;m=c[4+o>>2]|0;g=fh(g,m);i=new CheerpException(g);k.a0=i;throw i;;}function fh(q,r){var k=0,o=0,g=null,m=0,i=0;g=String();m=0;while(1){k=q[r+m|0]|0;if((k&255)!==0){o=k&255;if(k<<24>-16777216){i=o;}else if((k&255)<192){i=(o&63)+(i<<6)|0;}else if((k&255)<224){i=o&31;}else if((k&255)<240){i=o&15;}else{i=o&7;}m=m+1|0;a:{if((m|0)!==-1)if((q[r+m|0]&192)===128)break a;if(i>>>0<65536)g=g.concat(String.fromCharCode(i));else{g=g.concat(String.fromCharCode(i-65536>>>10|55296));g=g.concat(String.fromCharCode(i&1023|56320));}}if((m|0)!==-1)continue;return g;}break;}return g;}function ii(s,q,r,o,p,m,n){var x=null,v=0,t=0,k=0,g=null,i=0;k=s.i2|0;a:{b:{if((k|0)>1){g=s.a1;i=1;while(1){if((g[i]&255)!==0){i=i+1|0;if((i|0)===(k|0))break b;continue;}break;}}else{i=1;}if((i|0)!==(k|0)){g=s.a1;k=i;break a;}}s.i2=k<<1;g=s.a0;i=JX(k,96)|0;if(g!==nullArray||0!==0)g=I$(g,g.length,i/48|0);else g=I8(i/48|0);s.a0=g;i=s.i2|0;g=s.a1;if(g!==nullArray||0!==0)g=(function(){var __old__=g;var __ret__=new Uint8Array(i/1|0);__ret__.set(__old__.subarray(0, Math.min(__ret__.length,__old__.length)));return __ret__;})();else g=new Uint8Array(i/1|0);s.a1=g;}x=s.a0;i=q[r]|0;v=o[p]|0;t=m[n]|0;x[k].a1=null;x[k].i2=i;x[k].a3=null;x[k].a4=v;x[k].a5=null;x[k].i6=t;x[k].i7=1;x[k].i8=0;x[k].a10=null;x[k].a11=null;g[k]=1;return x[k];}function mU(){throw new Error('Cheerp: Signal raised');;}function mT(o){var m=null,i=null,k=null,g=0;m=mR();i=(typeof process == 'undefined' ? [] : process.argv) || [];if(((i.length)|0)!==0){g=0;while(1){k=i[(+(g>>>0))];if(k.startsWith(o))+m.push(k.substr((+((o.length)|0))));g=g+1|0;if(g>>>0<(i.length)>>>0)continue;break;}}return m;}function gR(o,p,m,k,i){var g=0;if((k.length)>>>0>i>>>0){g=mS(o,p,m,k[(+(i>>>0))])|0;if(g>>>0<m>>>0)o[p+g|0]=0;return g+1|0;}return 0|0;}function mS(v,w,t,s){var q=0,o=0,k=0,i=0,m=0,g=0;q=s.length;if((q|0)===0)return 0|0;m=0;i=0;k=0;while(1){g=s.charCodeAt((+(i>>>0)));a:{if((g& -2048|0)===55296){o=i+1|0;if(o>>>0<q>>>0){i=s.charCodeAt((+(o>>>0)));g=((i|g)&1023)+65536|0;i=o;}else{g=-1;}}else if(g>>>0>1114111){g=-1;}else{if(g>>>0<128){if(m>>>0<t>>>0){v[w+k|0]=g;k=k+1|0;g=1;break a;}g=1;break a;}if(g>>>0<2048){if(m+1>>>0<t>>>0){v[w+k|0]=g>>>6|192;v[(w+k|0)+1|0]=g&63|128;k=k+2|0;g=2;break a;}g=2;break a;}if(g>>>0<65536){if(m+2>>>0<t>>>0){v[w+k|0]=g>>>12|224;v[(w+k|0)+1|0]=g>>>6&63|128;v[(w+k|0)+2|0]=g&63|128;k=k+3|0;g=3;break a;}g=3;break a;}}if(m+3>>>0<t>>>0){v[w+k|0]=g>>>18|240;v[(w+k|0)+1|0]=g>>>12&63|128;v[(w+k|0)+2|0]=g>>>6&63|128;v[(w+k|0)+3|0]=g&63|128;k=k+4|0;g=4;}else{g=4;}}m=m+g|0;i=i+1|0;if(i>>>0<q>>>0)continue;break;}return m|0;}function mR(){return new Array();}function mM(m,n,k,i){var g=null;if(kW|0)return (gR(m,n,k,kV,i)|0)|0;g=CHEERP_ENV;if(g!==null)g=CHEERP_ENV;else g=mT("--cheerp-env=");kV=g;kW=1;return (gR(m,n,k,g,i)|0)|0;}function mJ(v,t){var i=null,s=null,o=0,m=0,g=0,k=0,q=0;if(l8|0){i=gA;}else{i=String();gA=i;l8=1;}s=[null];mI(s,0,i);if((t|0)>0){m=0;o=0;while(1){g=(m<<3)+v|0;k=c[4+g>>2]|0;if((k|0)!==0){o=k+o|0;i=a;q=c[g>>2]|0;if((k|0)>0){g=0;while(1){mH(s,0,i[q+g|0]|0);g=g+1|0;if((g|0)!==(k|0))continue;break;}}}m=m+1|0;if((m|0)!==(t|0))continue;break;}}else{o=0;}i=mG(s,0);i=i.split("\n");m=i.length;if((m|0)>1){q=0;k=1;while(1){s=e5(i,(+(q|0)));g=oSlot;console.log(s[g]);q=k+1|0;if((q|0)!==(m|0)){g=q;q=k;k=g;continue;}break;}}s=e5(i,(+(m-1|0)));k=oSlot;gA=s[k];return o|0;}function mI(i,j,g){i[j]=g;}function mH(q,r,o){var m=null,k=null,s=0,i=0,g=0;i=gz|0;g=o&255;m=1069936|0;k=1069924|0;a:if((o&255)<192){if((i|0)===0){if(o<<24<=-16777216)dQ(1069912|0,m,79,k);;eG=g;}else{if((g&192|0)!==128)dQ(1069992|0,m,65,k);;g=(eG<<6)+(g&63)|0;eG=g;i=i-1|0;gz=i;if((i|0)!==0)break a;}mE(q,r,g);}else{if((i|0)!==0)dQ(1069896|0,m,90,k);;if((o&255)<224){s=31;i=1;}else{s=(o&255)<240?15|0:7|0;i=(o&255)<240?2|0:3|0;}gz=i;eG=s&g;}}function mG(g,h){return g[h];}function mE(k,l,i){var g=null;a:{if(i>>>0<65536){if((i|0)===0)break a;g=k[l];g=g.concat(String.fromCharCode(i));}else{g=k[l];g=g.concat(String.fromCharCode((i-65536>>>10)+55296|0));k[l]=g;g=g.concat(String.fromCharCode((i&1023)+56320|0));}k[l]=g;}}function mv(k,i,g){return (mM(a,k>>0,i,g)|0)|0;}function mu(o,m,k,i,g){z7(o,a,m>>0,k,i,g);}function mt(k,i,g){yj(k,a,i>>0,g);}function ms(i,g){ry(a,i>>0,g);}var c0=null;var cA=nullArray;var dK=0;var cB=nullArray;var ch=nullArray;var dJ=0;var ci=nullArray;var l9=null;var l8=0;var gA=null;var gz=0;var eG=0;var kW=0;var kV=null;var i9=null;var jD=null;function I5(){this.a0=null;this.a1=null;this.i2=0;this.a3=null;this.a4=0;this.a5=null;this.i6=0;this.i7=0;this.i8=0;this.a9=null;this.a10=null;this.a11=null;}function I8(e){var r=[];for(var i=0;i<e;i++)r[i]=new I5();return r;}function I9(e){var r=[];for(var i=0;i<e;i++)r[i]={a0:0,a1:null,a2:null,a3:null};return r;}function I_(e){var r=[];for(var i=0;i<e;i++)r[i]={a0:null,a1:0};return r;}function Ja(r,s,e){for(var i=s;i<e;i++)r[i]={a0:0,a1:null,a2:null,a3:null};return r;}function Jb(r,s,e){for(var i=s;i<e;i++)r[i]={a0:null,a1:0};return r;}function I$(r,s,e){for(var i=s;i<e;i++)r[i]=new I5();return r;}function Kc(func, obj){return function(){var a=Array.prototype.slice.call(arguments);a.unshift(obj);return func.apply(null,a);};}function Kd(func, obj, objo){return function(){var a=Array.prototype.slice.call(arguments);a.unshift(obj,objo);return func.apply(null,a);};}function CheerpException(m){var instance=new Error('Uncaught C++ exception: '+m);instance.name='CheerpException';Object.setPrototypeOf(instance,Object.getPrototypeOf(this));if(Error.captureStackTrace){Error.captureStackTrace(instance, CheerpException);}return instance;}CheerpException.prototype=Object.create(Error.prototype);function Kh(pages){try{var ret=KC.grow(pages);__heap=KC.buffer;Ki(__heap);return ret;}catch(e){return -1;}}var IpStack={TCPSocket:null,UDPSocket:null,down:null,dumpIP:null,init:null,input:null,output:null,parseIP:null,resolve:null,up:null,};var a=null,c=null,__asm=null,__heap=null;function Kj(){throw new Error('this should be unreachable');};var KC=new WebAssembly.Memory({initial:30,maximum:2048});var mD=null;var dQ=null;var pf=null;var bH=null;var hx=null;var ck=null;var o4=null;var co=null;var o5=null;var w3=null;var en=null;var jw=null;var ju=null;var Ai=null;var dA=null;var wb=null;var w7=null;var c9=null;var xe=null;var xg=null;var ou=null;var zC=null;var oz=null;var nZ=null;var n0=null;var fE=null;var yF=null;var yD=null;var sr=null;var o2=null;var a8=null;var ph=null;var ql=null;var qj=null;var qf=null;var qe=null;var rd=null;var qd=null;var rg=null;var pa=null;var o_=null;var ww=null;var cD=null;var bc=null;IpStack.TCPSocket=Kj;IpStack.UDPSocket=Kj;IpStack.down=Kj;IpStack.dumpIP=Kj;IpStack.init=Kj;IpStack.input=Kj;IpStack.output=Kj;IpStack.parseIP=Kj;IpStack.resolve=Kj;IpStack.up=Kj;export default function(g){CHEERP_ENV=(typeof g == 'undefined' ? null : g.env) || null;CHEERP_ARGV=(typeof g == 'undefined' ? null : g.argv) || null;return ((g&&g.buffer)?Promise.resolve(g.buffer):Kn((g&&g.absPath)?g.absPath:new URL('ipstack.wasm', import.meta.url))).then(g=>WebAssembly.instantiate(g,{i:{KC:KC,Fm:Fm,Fl:Fl,Fk:Fk,tF:tF,mJ:mJ,mU:mU,ms:ms,hh:hh,mt:mt,m0:Kj,ze:ze,fd:fd,mu:mu,r5:r5,rw:rw,mv:mv,Kh:Kh,}})).then(g=>{__asm=g.instance.exports;__heap=KC.buffer;Ki(__heap);mD=__asm.mD;dQ=__asm.dQ;pf=__asm.pf;bH=__asm.bH;hx=__asm.hx;ck=__asm.ck;o4=__asm.o4;co=__asm.co;o5=__asm.o5;w3=__asm.w3;en=__asm.en;jw=__asm.jw;ju=__asm.ju;Ai=__asm.Ai;dA=__asm.dA;wb=__asm.wb;w7=__asm.w7;c9=__asm.c9;xe=__asm.xe;xg=__asm.xg;ou=__asm.ou;zC=__asm.zC;oz=__asm.oz;nZ=__asm.nZ;n0=__asm.n0;fE=__asm.fE;yF=__asm.yF;yD=__asm.yD;sr=__asm.sr;o2=__asm.o2;a8=__asm.a8;ph=__asm.ph;ql=__asm.ql;qj=__asm.qj;qf=__asm.qf;qe=__asm.qe;rd=__asm.rd;qd=__asm.qd;rg=__asm.rg;pa=__asm.pa;o_=__asm.o_;ww=__asm.ww;cD=__asm.cD;bc=__asm.bc;IpStack.TCPSocket=function (){throw new Error("Class/Struct IpStack.TCPSocket do not have a [[cheerp::jsexport]]-ed constructor");};IpStack.TCPSocket.prototype.bind=function(a0){return Jx(this.this.d[this.this.o],a0);};IpStack.TCPSocket.prototype.close=function(){return JA(this.this.d,this.this.o);};IpStack.TCPSocket.prototype.connect=function(a0,a1,a2){return JC(this.this.d,this.this.o,a0,a1,a2);};IpStack.TCPSocket.create=function(){return Object.create(IpStack.TCPSocket.prototype,{this:{value:{d:JD(),o:oSlot}}});};IpStack.TCPSocket.prototype.delete=function(){return Jv(this.this.d[this.this.o]);};IpStack.TCPSocket.prototype.dispose=function(){return Fb(this.this.d,this.this.o);};IpStack.TCPSocket.prototype.listen=function(a0){return Jw(this.this.d,this.this.o,a0);};IpStack.TCPSocket.prototype.recv=function(a0){return JB(this.this.d,this.this.o,a0);};IpStack.TCPSocket.prototype.send=function(a0){return JE(this.this.d[this.this.o],a0);};IpStack.TCPSocket.prototype.shutdownRx=function(){return Jy(this.this.d[this.this.o]);};IpStack.TCPSocket.prototype.shutdownTx=function(){return Jz(this.this.d[this.this.o]);};IpStack.UDPSocket=function (){throw new Error("Class/Struct IpStack.UDPSocket do not have a [[cheerp::jsexport]]-ed constructor");};IpStack.UDPSocket.prototype.bind=function(a0){return Jt(this.this.d[this.this.o],a0);};IpStack.UDPSocket.prototype.close=function(){return Jq(this.this.d,this.this.o);};IpStack.UDPSocket.create=function(){return Object.create(IpStack.UDPSocket.prototype,{this:{value:{d:Ju(),o:oSlot}}});};IpStack.UDPSocket.prototype.delete=function(){return Jp(this.this.d[this.this.o]);};IpStack.UDPSocket.prototype.dispose=function(){return Fa(this.this.d,this.this.o);};IpStack.UDPSocket.prototype.recv=function(a0){return Js(this.this.d,this.this.o,a0);};IpStack.UDPSocket.prototype.sendto=function(a0,a1,a2){return Jr(this.this.d[this.this.o],a0,a1,a2);};IpStack.down=Jl;IpStack.dumpIP=Jh;IpStack.init=Jn;IpStack.input=Jk;IpStack.output=Jj;IpStack.parseIP=Ji;IpStack.resolve=Jg;IpStack.up=Jm;__asm.mD();var Kk={IpStack:IpStack,};return Kk;});}function Ki(g){a=new Uint8Array(g);c=new Int32Array(g);}
+"use strict";
+/*Compiled using Cheerp (R) by Leaning Technologies Ltd*/
+var __imul=Math.imul;
+var __fround=Math.fround;
+var oSlot=0;var nullArray=[null];var nullObj={d:nullArray,o:0};
+function fetchBuffer(p){
+	return (typeof self==='object')?
+	fetch(p).then(r=>r.arrayBuffer()):
+	new Promise((y,n)=>{
+		import('fs').then(r=>r.readFile(p,(e,d)=>{
+			if(e)n(e);
+			else y(d);
+		}));
+	});
+}
+var __stackPtr=1048576|0;
+var CHEERP_ENV=null,CHEERP_ARGV=null;
+function ___ctor__Z28taskToPromiseHelperAllocatorIiE(){
+	if(!(__ZGV28taskToPromiseHelperAllocatorIiE|0)){
+		__ZGV28taskToPromiseHelperAllocatorIiE=1;
+		__ZN11IdAllocatorIPFviEEC2Ev();
+	}
+}
+function ___ctor__ZN7IpStackL10dnsQueriesE(){
+	__ZN7IpStackL10dnsQueriesE=_cheerpCreate_ZN6client6TArrayIPFviEEC2Ev();
+}
+function _cheerpCreate_ZN6client6TArrayIPFviEEC2Ev(){
+	return new Array();
+}
+function __ZN11IdAllocatorIPFviEEC2Ev(){
+	var tmp0=null;
+	tmp0=new Uint8Array(16);
+	__Z28taskToPromiseHelperAllocatorIiE$p1=tmp0;
+	__Z28taskToPromiseHelperAllocatorIiE$p2=16;
+	tmp0=createPointerArray([],0,16,nullObj);
+	__Z28taskToPromiseHelperAllocatorIiE$p0=tmp0;
+}
+function __ZN7IpStack9TCPSocketC1Ev(Larg0){
+	var tmp0=null,tmp1=0;
+	tmp0=HEAP8;
+	tmp1=__Znwj(92)|0;
+	__ZN3tcp6SocketC2Ev(tmp1|0);
+	Larg0.a0=(tmp1|0);
+}
+function __ZN7IpStack9TCPSocketD2Ev(Larg0){
+	var tmp0=0;
+	tmp0=Larg0.a0|0;
+	if((tmp0|0)!=(0|0)){
+		__ZN3tcp6SocketD2Ev(tmp0);
+		__ZdlPv(tmp0|0);
+	}
+}
+function __ZN7IpStack9TCPSocketD1Ev(Larg0){
+	__ZN7IpStack9TCPSocketD2Ev(Larg0);
+}
+function __ZN7IpStack9TCPSocket12waitIncomingEv(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=null;
+	LsavedStack=___getStackPtr();
+	tmp2=-8+LsavedStack|0;
+	___setStackPtr(tmp2);
+	tmp1=tmp2|0;
+	__ZN3tcp6Socket12waitIncomingEv(tmp1,Larg0.a0|0);
+	tmp2=__Z13taskToPromiseIiEPN6client7PromiseIT_EEO4TaskIS2_E(tmp1);
+	__ZN4TaskIiED2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return tmp2;
+}
+function __ZN7IpStack9TCPSocket12waitOutgoingEv(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=null;
+	LsavedStack=___getStackPtr();
+	tmp2=-8+LsavedStack|0;
+	___setStackPtr(tmp2);
+	tmp1=tmp2|0;
+	__ZN3tcp6Socket12waitOutgoingEv(tmp1,Larg0.a0|0);
+	tmp2=__Z13taskToPromiseIiEPN6client7PromiseIT_EEO4TaskIS2_E(tmp1);
+	__ZN4TaskIiED2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return tmp2;
+}
+function __ZN7IpStack9TCPSocket7connectEii(Larg0,Larg1,Larg2){
+	var tmp0=0;
+	tmp0=__ZL6map_ipj(Larg1)|0;
+	tmp0=__ZN3tcp6Socket7connectEii(Larg0.a0|0,tmp0,Larg2)|0;
+	return ((tmp0|0)!==0? -22|0:0|0)|0;
+}
+function __ZN7IpStack9TCPSocket4recvEPN6client10Uint8ArrayEjj(Larg0,Larg1,Larg2,Larg3){
+	var tmp0=0;
+	tmp0=__ZN3tcp6Socket4recvEPN6client10Uint8ArrayEjj(Larg0.a0|0,Larg1,Larg2,Larg3)|0;
+	if((tmp0|0)===-7)return  -11|0;
+	return ((tmp0|0)<0? -22|0:tmp0|0)|0;
+}
+function __ZN7IpStack9TCPSocket4sendEPN6client10Uint8ArrayEjj(Larg0,Larg1,Larg2,Larg3){
+	var LsavedStack=null,tmp1=null,tmp2=0,tmp3=null,tmp4=0,tmp5=null,tmp6=0,Lsmin_select=0,tmp8=0;
+	LsavedStack=___getStackPtr();
+	tmp1=-24+LsavedStack|0;
+	___setStackPtr(tmp1);
+	Lsmin_select=__ZN3tcp6Socket14writeAvailableEv(Larg0.a0|0)|0;
+	if((Lsmin_select|0)!==0){
+		Lsmin_select=Lsmin_select>>>0<Larg3>>>0?Lsmin_select|0:Larg3|0;
+		tmp2=tmp1|0;
+		__ZNSt6vectorIhSaIhEEC2Ej(tmp2,Lsmin_select);
+		if((Lsmin_select|0)!==0){
+			tmp8=0;
+			while(1){
+				tmp3=__ZN6client10Uint8ArrayixEd(Larg1,(+(tmp8+Larg2>>>0)));
+				tmp4=oSlot;
+				tmp5=HEAP8;
+				tmp6=__ZNSt6vectorIhSaIhEEixB7v160000Ej(tmp2,tmp8)|0;
+				tmp5[tmp6]=tmp3[tmp4]|0;
+				tmp8=tmp8+1|0;
+				if((tmp8|0)!==(Lsmin_select|0))continue;
+				break;
+			}
+		}
+		Lsmin_select=Larg0.a0|0;
+		tmp8=16+tmp1|0;
+		__ZNSt4spanIKhLj4294967295EEC2B7v160000IRSt6vectorIhSaIhEEEEOT_(tmp8,tmp2);
+		Lsmin_select=__ZN3tcp6Socket4sendESt4spanIKhLj4294967295EE(Lsmin_select,tmp8)|0;
+		__ZNSt6vectorIhSaIhEED2B7v160000Ev(tmp2);
+		___setStackPtr(LsavedStack);
+		return ((Lsmin_select|0)<0? -22|0:Lsmin_select|0)|0;
+	}
+	___setStackPtr(LsavedStack);
+	return  -11|0;
+}
+function __ZN7IpStack9TCPSocket6acceptEv(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=0,tmp3=0,tmp4=0,tmp5=null,tmp6=null;
+	LsavedStack=___getStackPtr();
+	tmp5=-96+LsavedStack|0;
+	___setStackPtr(tmp5);
+	tmp1=tmp5|0;
+	__ZN3tcp6Socket6acceptEv(tmp1,Larg0.a0|0);
+	if(__ZNK4PbufcvbEv_icf(tmp1|0)|0){
+		tmp2=__ZN3tcp6Socket13getRemoteAddrEv(tmp1)|0;
+		tmp3=__ZN3tcp6Socket13getRemotePortEv(tmp1)|0;
+		tmp5={a0:0};
+		tmp6=HEAP8;
+		tmp4=__Znwj(92)|0;
+		__ZN3tcp6SocketC2EOS0_(tmp4|0,tmp1);
+		__ZN7IpStack9TCPSocketC2EPN3tcp6SocketE(tmp5,tmp4|0);
+		tmp6=_cheerpCreate_ZN6client12AcceptReturnC2Ev();
+		tmp6.socket=Object.create(IpStack.TCPSocket.prototype,{this:{value:tmp5}});
+		tmp6.addr=tmp2;
+		tmp6.port=tmp3;
+		__ZN3tcp6SocketD2Ev(tmp1);
+		___setStackPtr(LsavedStack);
+		return tmp6;
+	}
+	__ZN3tcp6SocketD2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return null;
+}
+function __ZN7IpStack9TCPSocket5closeEv(Larg0){
+	__ZN3tcp6Socket5closeEv(Larg0.a0|0);
+}
+function __ZN7IpStack9TCPSocket10shutdownTxEv(Larg0){
+	__ZN3tcp6Socket10shutdownTxEv(Larg0.a0|0);
+}
+function __ZN7IpStack9TCPSocket10shutdownRxEv(Larg0){
+	__ZN3tcp6Socket10shutdownRxEv(Larg0.a0|0);
+}
+function __ZN7IpStack9TCPSocket4bindEi(Larg0,Larg1){
+	var tmp0=0;
+	tmp0=__ZN3tcp6Socket4bindEii(Larg0.a0|0,Larg1)|0;
+	return ((tmp0|0)<0? -22|0:0|0)|0;
+}
+function __ZN7IpStack9TCPSocket6listenEv(Larg0){
+	__ZN3tcp6Socket6listenEv(Larg0.a0|0);
+	return 0|0;
+}
+function __ZN7IpStack9TCPSocket13readAvailableEv(Larg0){
+	return (__ZN3tcp6Socket13readAvailableEv(Larg0.a0|0)|0)|0;
+}
+function __ZN7IpStack9UDPSocketC1Ev(Larg0){
+	var tmp0=null,tmp1=0;
+	tmp0=HEAP8;
+	tmp1=__Znwj(48)|0;
+	__ZN3udp6SocketC2Ev(tmp1|0);
+	Larg0.a0=(tmp1|0);
+}
+function __ZN7IpStack9UDPSocketD2Ev(Larg0){
+	var tmp0=0;
+	tmp0=Larg0.a0|0;
+	if((tmp0|0)!=(0|0)){
+		__ZN3udp6SocketD2Ev(tmp0);
+		__ZdlPv(tmp0|0);
+	}
+}
+function __ZN7IpStack9UDPSocketD1Ev(Larg0){
+	__ZN7IpStack9UDPSocketD2Ev(Larg0);
+}
+function __ZN7IpStack9UDPSocket4bindEi(Larg0,Larg1){
+	var tmp0=0;
+	tmp0=__ZN3udp6Socket4bindEii(Larg0.a0|0,Larg1)|0;
+	return ((tmp0|0)<0? -22|0:0|0)|0;
+}
+function __ZN7IpStack9UDPSocket12waitIncomingEv(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=null;
+	LsavedStack=___getStackPtr();
+	tmp2=-8+LsavedStack|0;
+	___setStackPtr(tmp2);
+	tmp1=tmp2|0;
+	__ZN3udp6Socket12waitIncomingEv(tmp1,Larg0.a0|0);
+	tmp2=__Z13taskToPromiseIiEPN6client7PromiseIT_EEO4TaskIS2_E(tmp1);
+	__ZN4TaskIiED2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return tmp2;
+}
+function __ZN7IpStack9UDPSocket4recvEPN6client10Uint8ArrayEjjPNS1_8AddrInfoE(Larg0,Larg1,Larg2,Larg3,Larg4){
+	var LsavedStack=null,tmp1=null,tmp2=0;
+	LsavedStack=___getStackPtr();
+	tmp1=-16+LsavedStack|0;
+	___setStackPtr(tmp1);
+	__ZN3udp6Socket4recvEPN6client10Uint8ArrayEjj(tmp1|0,Larg0.a0|0,Larg1,Larg2,Larg3);
+	tmp2=HEAP32[8+tmp1>>2]|0;
+	if((tmp2|0)===-7){
+		___setStackPtr(LsavedStack);
+		return  -11|0;
+	}
+	Larg4.addr=__ZL6map_ipj(HEAP32[tmp1>>2]|0)|0;
+	Larg4.port=HEAP32[4+tmp1>>2]|0;
+	___setStackPtr(LsavedStack);
+	return tmp2|0;
+}
+function __ZN7IpStack9UDPSocket6sendtoEPN6client10Uint8ArrayEii(Larg0,Larg1,Larg2,Larg3){
+	var LsavedStack=null,tmp1=null,tmp2=0,tmp3=0,tmp4=null,tmp5=null,tmp6=0,tmp7=0,tmp8=0;
+	LsavedStack=___getStackPtr();
+	tmp1=-24+LsavedStack|0;
+	___setStackPtr(tmp1);
+	tmp2=__ZL6map_ipj(Larg2)|0;
+	tmp3=tmp1|0;
+	__ZNSt6vectorIhSaIhEEC2Ej(tmp3,Larg1.length);
+	if(((Larg1.length)|0)>0){
+		tmp7=0;
+		while(1){
+			tmp4=__ZN6client10Uint8ArrayixEd(Larg1,(+(tmp7|0)));
+			tmp8=oSlot;
+			tmp5=HEAP8;
+			tmp6=__ZNSt6vectorIhSaIhEEixB7v160000Ej(tmp3,tmp7)|0;
+			tmp5[tmp6]=tmp4[tmp8]|0;
+			tmp7=tmp7+1|0;
+			if((tmp7|0)<((Larg1.length)|0))continue;
+			break;
+		}
+	}
+	tmp7=Larg0.a0|0;
+	tmp8=16+tmp1|0;
+	__ZNSt4spanIKhLj4294967295EEC2B7v160000IRSt6vectorIhSaIhEEEEOT_(tmp8,tmp3);
+	__ZN3udp6Socket6sendtoESt4spanIKhLj4294967295EEii(tmp7,tmp8,tmp2,Larg3);
+	__ZNSt6vectorIhSaIhEED2B7v160000Ev(tmp3);
+	___setStackPtr(LsavedStack);
+	return 0|0;
+}
+function __ZN7IpStack9UDPSocket5closeEv(Larg0){
+	__ZN3udp6Socket5closeEv(Larg0.a0|0);
+}
+function __ZN7IpStack9TCPSocket3newEv(){
+	var tmp0=null;
+	tmp0={a0:0};
+	__ZN7IpStack9TCPSocketC1Ev(tmp0);
+	return tmp0;
+}
+function __ZN7IpStack9TCPSocket6deleteEv(Larg0){
+	__ZN7IpStack9TCPSocketD1Ev(Larg0);
+}
+function __ZN7IpStack9UDPSocket3newEv(){
+	var tmp0=null;
+	tmp0={a0:0};
+	__ZN7IpStack9UDPSocketC1Ev(tmp0);
+	return tmp0;
+}
+function __ZN7IpStack9UDPSocket6deleteEv(Larg0){
+	__ZN7IpStack9UDPSocketD1Ev(Larg0);
+}
+function __ZN6client10Uint8ArrayixEd(Larg0,Larg1){
+	oSlot=0+~~Larg1|0;
+	return Larg0;
+}
+function __Z13taskToPromiseIiEPN6client7PromiseIT_EEO4TaskIS2_E(Larg0){
+	var LsavedStack=null,tmp1=null,tmp2=null,tmp3=0,tmp4=null,tmp5=0;
+	LsavedStack=___getStackPtr();
+	tmp4=-16+LsavedStack|0;
+	___setStackPtr(tmp4);
+	tmp1={a0:null,a1:[null],a2:null};
+	__ZN11PromiseDataIiPN6client4_AnyEEC2Ev(tmp1);
+	tmp2=__ZN11IdAllocatorIPFviEE8allocateIJRS1_EEEPS1_DpOT_(tmp1.a1,0);
+	tmp5=oSlot;
+	tmp5=__ZN11IdAllocatorIPFviEE6get_idEPS1_(tmp2,tmp5)|0;
+	tmp3=tmp4|0;
+	__ZN4TaskIiEC2EOS0_(tmp3,Larg0|0);
+	__Z19taskToPromiseHelperIiE6Thread4TaskIT_Ei(8+tmp4|0,tmp3,tmp5);
+	__ZN4TaskIiED2Ev(tmp3);
+	tmp4=tmp1.a0;
+	___setStackPtr(LsavedStack);
+	return tmp4;
+}
+function __ZN11PromiseDataIiPN6client4_AnyEEC2Ev(Larg0){
+	var tmp0=null,tmp1=null;
+	Larg0.a1[0]=null;
+	Larg0.a2=null;
+	tmp0=_cheerpCreate_ZN6client9CheerpRefINS_13EventListenerEEC2Ev();
+	tmp1=_cheerpCreate_ZN6client9CheerpRefINS_13EventListenerEEC2Ev();
+	Larg0.a0=new Promise(function(__f,__r){tmp0.inner=__f;tmp1.inner=__r;});;
+	Larg0.a1[0]=tmp0.inner;
+	Larg0.a2=tmp1.inner;
+}
+function __ZN11IdAllocatorIPFviEE8allocateIJRS1_EEEPS1_DpOT_(Larg0,Marg0){
+	var tmp0=0,tmp1=null,tmp2=null;
+	tmp0=__ZN11IdAllocatorIPFviEE12find_free_idEv()|0;
+	tmp1=__Z28taskToPromiseHelperAllocatorIiE$p0;
+	tmp1[tmp0]=Larg0[Marg0];
+	tmp2=__Z28taskToPromiseHelperAllocatorIiE$p1;
+	tmp2[tmp0]=1;
+	oSlot=0+tmp0|0;
+	return tmp1;
+}
+function __ZN11IdAllocatorIPFviEE6get_idEPS1_(Larg0,Marg0){
+	var tmp0=null;
+	if(Larg0!==nullArray||Marg0!==0){
+		tmp0=__Z28taskToPromiseHelperAllocatorIiE$p0;
+		return (__imul(Marg0,4))-(__imul(0,4))>>2|0;
+	}
+	return  -1|0;
+}
+function __Z21taskToPromiseHelperJsIiEvT_i(Larg0,Larg1){
+	var tmp0=null,tmp1=0,tmp2=null;
+	tmp0=__ZN11IdAllocatorIPFviEE10get_objectEi(Larg1);
+	tmp1=oSlot;
+	tmp2=tmp0[tmp1];
+	__ZN11IdAllocatorIPFviEE10deallocateEPS1_(tmp0,tmp1);
+	tmp2(Larg0);
+}
+function __ZN11IdAllocatorIPFviEE10get_objectEi(Larg0){
+	var tmp0=0,tmp1=null;
+	tmp0=__Z28taskToPromiseHelperAllocatorIiE$p2|0;
+	if((Larg0|0)>-1){
+		if((tmp0|0)>(Larg0|0)){
+			tmp1=__Z28taskToPromiseHelperAllocatorIiE$p1;
+			if((tmp1[Larg0]&1)!==0){
+				tmp1=__Z28taskToPromiseHelperAllocatorIiE$p0;
+				oSlot=0+Larg0|0;
+				return tmp1;
+			}
+			oSlot=0;
+			return nullArray;
+		}
+		oSlot=0;
+		return nullArray;
+	}
+	oSlot=0;
+	return nullArray;
+}
+function __ZN11IdAllocatorIPFviEE10deallocateEPS1_(Larg0,Marg0){
+	var tmp0=0,tmp1=null;
+	tmp0=__ZN11IdAllocatorIPFviEE6get_idEPS1_(Larg0,Marg0)|0;
+	tmp1=__Z28taskToPromiseHelperAllocatorIiE$p1;
+	tmp1[tmp0]=0;
+}
+function __ZN11IdAllocatorIPFviEE12find_free_idEv(){
+	var tmp0=0,tmp1=null,L$plcssa4=0;
+	tmp0=__Z28taskToPromiseHelperAllocatorIiE$p2|0;
+	a:{
+		if((tmp0|0)>1){
+			tmp1=__Z28taskToPromiseHelperAllocatorIiE$p1;
+			L$plcssa4=1;
+			while(1){
+				if((tmp1[L$plcssa4]&1)!==0){
+					L$plcssa4=L$plcssa4+1|0;
+					if((L$plcssa4|0)===(tmp0|0))break a;
+					continue;
+				}
+				break;
+			}
+		}else{
+			L$plcssa4=1;
+		}
+		if((L$plcssa4|0)!==(tmp0|0))return L$plcssa4|0;
+	}
+	L$plcssa4=tmp0<<1;
+	__Z28taskToPromiseHelperAllocatorIiE$p2=L$plcssa4;
+	tmp1=__Z28taskToPromiseHelperAllocatorIiE$p0;
+	if(tmp1!==nullArray||0!==0)tmp1=createPointerArray(tmp1,tmp1.length,L$plcssa4/4|0,nullObj);
+	else tmp1=createPointerArray([],0,L$plcssa4/4|0,nullObj);
+	__Z28taskToPromiseHelperAllocatorIiE$p0=tmp1;
+	L$plcssa4=__Z28taskToPromiseHelperAllocatorIiE$p2|0;
+	tmp1=__Z28taskToPromiseHelperAllocatorIiE$p1;
+	if(tmp1!==nullArray||0!==0)tmp1=(function(){var __old__=tmp1;
+		var __ret__=new Uint8Array(L$plcssa4/1|0);
+		__ret__.set(__old__.subarray(0, Math.min(__ret__.length,__old__.length)));
+		return __ret__;})();
+	else tmp1=new Uint8Array(L$plcssa4/1|0);
+	__Z28taskToPromiseHelperAllocatorIiE$p1=tmp1;
+	return tmp0|0;
+}
+function _cheerpCreate_ZN6client9CheerpRefINS_13EventListenerEEC2Ev(){
+	return new Object();
+}
+function __ZN7IpStack9TCPSocketC2EPN3tcp6SocketE(Larg0,Larg1){
+	Larg0.a0=(Larg1|0);
+}
+function _cheerpCreate_ZN6client12AcceptReturnC2Ev(){
+	return new Object();
+}
+function _sys_now(){
+	return ~~ +performance.now()|0;
+}
+function __Z9output_jsPhi(Larg0,Marg0,Larg1){
+	var tmp0=null;
+	tmp0=new Uint8Array(__ZN6cheerp14MakeTypedArrayIhN6client10Uint8ArrayEEEPT0_PKT_j(Larg0,Marg0,Larg1));
+	__ZL9output_cb(tmp0);
+}
+function __ZN6cheerp14MakeTypedArrayIhN6client10Uint8ArrayEEEPT0_PKT_j(Larg0,Marg0,Larg1){
+	var tmp0=0,tmp1=null;
+	tmp0=Marg0;
+	tmp1=Larg0;
+	tmp1=tmp1;
+	if((Larg1|0)!==0){
+		if((tmp0|0)===0)if(((tmp1.length)|0)===(Larg1|0))return tmp1;
+		return tmp1.subarray((+(tmp0>>>0)),(+(tmp0+Larg1>>>0)));
+	}
+	if((tmp0|0)===0)return tmp1;
+	return tmp1.subarray((+(tmp0>>>0)));
+}
+function __Z14start_timeoutsv(){
+	+setInterval(__ZN6cheerp8CallbackIZ14start_timeoutsvE3$_0EEPN6client13EventListenerEOT_(),10);
+}
+function __ZN6cheerp8CallbackIZ14start_timeoutsvE3$_0EEPN6client13EventListenerEOT_(){
+	var tmp0=null,tmp1=null;
+	tmp0={a0:null,a1:null,a2:null};
+	__ZN6cheerp12make_closureIZ14start_timeoutsvE3$_0EEDTclsr13ClosureHelperIT_DTadsr6cheerp7utility16remove_referenceIS2_E4typeEonclEEE12make_closureclgssr6cheerp7utilityE7forwardIS2_Efp_EEEOS2_(tmp0);
+	tmp1=__ZN6cheerp7ClosureIFvvEEcvPN6client13EventListenerEEv(tmp0);
+	__ZN6cheerp7ClosureIFvvEED2Ev(tmp0);
+	return tmp1;
+}
+function __ZN6cheerp12make_closureIZ14start_timeoutsvE3$_0EEDTclsr13ClosureHelperIT_DTadsr6cheerp7utility16remove_referenceIS2_E4typeEonclEEE12make_closureclgssr6cheerp7utilityE7forwardIS2_Efp_EEEOS2_(Larg0){
+	__ZN6cheerp13ClosureHelperIZ14start_timeoutsvE3$_0MS1_KFvvEE12make_closureEOS1_(Larg0);
+}
+function __ZN6cheerp7ClosureIFvvEEcvPN6client13EventListenerEEv(Larg0){
+	var tmp0=null;
+	if(Larg0.a1!==null){
+		tmp0=[{a0:null,a1:null}];
+		tmp0[0].a0=Larg0.a1;
+		tmp0[0].a1=Larg0.a2;
+		tmp0=cheerpCreateClosure(__ZN6cheerp7ClosureIFvvEE14deleter_helperEPNS2_13DeleterHelperE,tmp0[0]);
+		__ZN6cheerp20EscapedResourcesListIN6client13EventListenerEE3addEPS2_PNS1_6ObjectE(Larg0.a0,tmp0);
+		Larg0.a1=null;
+	}
+	return Larg0.a0;
+}
+function __ZN6cheerp7ClosureIFvvEED2Ev(Larg0){
+	var tmp0=null;
+	tmp0=Larg0.a1;
+	if(tmp0!==null)tmp0(Larg0.a2);
+}
+function __ZN6cheerp7ClosureIFvvEE14deleter_helperEPNS2_13DeleterHelperE(Larg0){
+	Larg0.a0(Larg0.a1);
+}
+function __ZN6cheerp20EscapedResourcesListIN6client13EventListenerEE3addEPS2_PNS1_6ObjectE(Larg0,Larg1){
+	var tmp0=null;
+	tmp0=__ZN6cheerp20EscapedResourcesListIN6client13EventListenerEE9resourcesE;
+	if(tmp0!==null){
+		tmp0.set(Larg0,Larg1);
+		return;
+	}
+	tmp0=new Map();
+	__ZN6cheerp20EscapedResourcesListIN6client13EventListenerEE9resourcesE=tmp0;
+	tmp0.set(Larg0,Larg1);
+}
+function __ZN6cheerp13ClosureHelperIZ14start_timeoutsvE3$_0MS1_KFvvEE12make_closureEOS1_(Larg0){
+	__ZN6cheerp7ClosureIFvvEEC2IZ14start_timeoutsvE3$_0EET_PNS_7utility9enable_ifIXsr6cheerp7utility14is_convertibleIS5_PS1_EE5valueEvE4typeE(Larg0);
+}
+function __ZN6cheerp7ClosureIFvvEEC2IZ14start_timeoutsvE3$_0EET_PNS_7utility9enable_ifIXsr6cheerp7utility14is_convertibleIS5_PS1_EE5valueEvE4typeE(Larg0){
+	var tmp0=null;
+	tmp0=__ZZ14start_timeoutsvEN3$_08__invokeEv;
+	Larg0.a0=tmp0;
+	Larg0.a1=null;
+	Larg0.a2=null;
+}
+function __ZZ14start_timeoutsvEN3$_08__invokeEv(){
+	__ZZ14start_timeoutsvENK3$_0clEv();
+}
+function __ZZ14start_timeoutsvENK3$_0clEv(){
+	_sys_check_timeouts();
+}
+function __ZN7IpStack9TCPSocket19__cheerp_get_EagainEv(){
+	return  -11|0;
+}
+function __ZN7IpStack9TCPSocket19__cheerp_get_EinvalEv(){
+	return  -22|0;
+}
+function __ZN7IpStack9UDPSocket19__cheerp_get_EagainEv(){
+	return  -11|0;
+}
+function __ZN7IpStack9UDPSocket19__cheerp_get_EinvalEv(){
+	return  -22|0;
+}
+function __ZN7IpStack4initEPN6client9UpOptionsE(Larg0){
+	__Z4initv();
+	__Z16udpecho_raw_initv();
+	__Z16tcpecho_raw_initv();
+}
+function __ZN7IpStack2upEPN6client9UpOptionsE(Larg0){
+	var LsavedStack=null,tmp1=null,tmp2=0,tmp3=0,tmp4=null,tmp5=0,tmp6=null,tmp7=null,tmp8=0,tmp9=0,tmp10=0,tmp11=null;
+	LsavedStack=___getStackPtr();
+	tmp1=-104+LsavedStack|0;
+	___setStackPtr(tmp1);
+	tmp2=88+tmp1|0;
+	__ZNK6client6StringcvSsEv(tmp2,Larg0.localIp);
+	tmp3=72+tmp1|0;
+	__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEEC2B7v160000Ev(tmp3);
+	tmp7=Larg0.ipMap;
+	if(tmp7!==undefined){
+		tmp4=Object.keys(tmp7);
+		if(((tmp4.length)|0)>0){
+			tmp8=56+tmp1|0;
+			tmp9=40+tmp1|0;
+			tmp10=0;
+			while(1){
+				tmp11=__ZN6client6TArrayIPNS_6StringEEixEd(tmp4,(+(tmp10|0)));
+				tmp5=oSlot;
+				tmp11=tmp11[tmp5];
+				tmp6=tmp7[tmp11];
+				__ZNK6client6StringcvSsEv(tmp8,tmp11);
+				__ZNK6client6StringcvSsEv(tmp9,tmp6);
+				__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE7emplaceB7v160000IJSsSsEEES2_ISt14__map_iteratorISt15__tree_iteratorISt12__value_typeISsSsEPSt11__tree_nodeISB_PvElEEbEDpOT_(32+tmp1|0,tmp3,tmp8,tmp9);
+				__ZNSsD2Ev(tmp9);
+				__ZNSsD2Ev(tmp8);
+				tmp10=tmp10+1|0;
+				if((tmp10|0)<((tmp4.length)|0))continue;
+				break;
+			}
+		}
+	}
+	tmp8=16+tmp1|0;
+	__ZNSsC2B7v160000Ev(tmp8);
+	tmp7=Larg0.dnsIp;
+	if(undefined!==tmp7){
+		tmp9=tmp1|0;
+		__ZNK6client6StringcvSsEv(tmp9,Larg0.dnsIp);
+		__ZNSsaSB7v160000EOSs(tmp8,tmp9)|0;
+		__ZNSsD2Ev(tmp9);
+	}
+	__Z2upRKSsRKSt3mapISsSsSt4lessISsESaISt4pairIS_SsEEES0_(tmp2,tmp3,tmp8);
+	__ZNSsD2Ev(tmp8);
+	__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEED2B7v160000Ev(tmp3);
+	__ZNSsD2Ev(tmp2);
+	___setStackPtr(LsavedStack);
+}
+function __ZNK6client6StringcvSsEv(Larg0,Larg1){
+	__ZNK6client6String6toUtf8Ev(Larg0|0,Larg1);
+}
+function __ZN6client6TArrayIPNS_6StringEEixEd(Larg0,Larg1){
+	oSlot=0+~~Larg1|0;
+	return Larg0;
+}
+function __ZNK6client6String6toUtf8Ev(Larg0,Larg1){
+	var tmp0=0,tmp1=0,tmp2=0,L$psink=0;
+	__ZNSsC2B7v160000Ev(Larg0|0);
+	tmp0=Larg1.length;
+	if((tmp0|0)!==0){
+		tmp1=0;
+		while(1){
+			L$psink=Larg1.charCodeAt((+(tmp1>>>0)));
+			if(L$psink-57344>>>0<4294965248){
+				tmp2=L$psink;
+			}else if(L$psink>>>0<56320){
+				tmp2=L$psink<<10&1047552;
+			}else{
+				tmp2=(L$psink&1023|tmp2)+65536|0;
+			}
+			tmp1=tmp1+1|0;
+			a:{
+				if((tmp1|0)!==(tmp0|0))if((L$psink&56320|0)===55296)break a;
+				if(tmp2>>>0<128){
+					L$psink=tmp2;
+				}else if(tmp2>>>0<2048){
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>6|192);
+					L$psink=tmp2&63|128;
+				}else if(tmp2>>>0<65536){
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>12|224);
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>6&63|128);
+					L$psink=tmp2&63|128;
+				}else{
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>18|240);
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>12&63|128);
+					__ZNSs9push_backEc(Larg0|0,tmp2>>>6&63|128);
+					L$psink=tmp2&63|128;
+				}
+				__ZNSs9push_backEc(Larg0|0,L$psink);
+			}
+			if((tmp1|0)!==(tmp0|0))continue;
+			break;
+		}
+	}
+}
+function __ZN7IpStack4downEv(){
+	__Z4downv();
+}
+function __ZN7IpStack5inputEPN6client10Uint8ArrayE(Larg0){
+	var tmp0=0,tmp1=0,tmp2=0,tmp3=null;
+	tmp0=Larg0.length;
+	tmp1=_pbuf_alloc(0,tmp0)|0;
+	if((tmp1|0)!=(0|0)){
+		tmp3=HEAP8;
+		tmp2=HEAP32[4+tmp1>>2]|0;
+		tmp3=__ZN6cheerp14MakeTypedArrayIhN6client10Uint8ArrayEEEPT0_PKT_j(tmp3,tmp2,tmp0);
+		tmp3.set(Larg0);
+		__ZN7IpStackL7doInputEP4pbuf(tmp1);
+	}
+}
+function __ZN7IpStack6outputEPFvPN6client10Uint8ArrayEE(Larg0){
+	__ZL9output_cb=Larg0;
+}
+function __ZN7IpStack7parseIPEPN6client6StringE(Larg0){
+	var LsavedStack=null,tmp1=null,tmp2=0,tmp3=0;
+	LsavedStack=___getStackPtr();
+	tmp1=-16+LsavedStack|0;
+	___setStackPtr(tmp1);
+	tmp2=tmp1|0;
+	__ZNK6client6StringcvSsEv(tmp2,Larg0);
+	tmp3=__ZN2ip4stonERKSs(tmp2)|0;
+	__ZNSsD2Ev(tmp2);
+	___setStackPtr(LsavedStack);
+	return tmp3|0;
+}
+function __ZN7IpStack6dumpIPEi(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=0,tmp3=0,tmp4=0,tmp5=null,tmp6=null,tmp7=0,tmp8=0;
+	LsavedStack=___getStackPtr();
+	tmp5=-16+LsavedStack|0;
+	___setStackPtr(tmp5);
+	tmp1=tmp5|0;
+	__ZN2ip4ntosEi(tmp1,Larg0);
+	tmp5=HEAP8;
+	tmp2=__ZNKSs5c_strB7v160000Ev(tmp1)|0;
+	tmp6=String();
+	tmp7=0;
+	while(1){
+		tmp3=tmp5[tmp2+tmp7|0]|0;
+		if((tmp3&255)!==0){
+			tmp4=tmp3&255;
+			if(tmp3<<24>-16777216){
+				tmp8=tmp4;
+			}else if((tmp3&255)<192){
+				tmp8=(tmp4&63)+(tmp8<<6)|0;
+			}else if((tmp3&255)<224){
+				tmp8=tmp4&31;
+			}else if((tmp3&255)<240){
+				tmp8=tmp4&15;
+			}else{
+				tmp8=tmp4&7;
+			}
+			tmp7=tmp7+1|0;
+			a:{
+				if((tmp7|0)!==-1)if((tmp5[tmp2+tmp7|0]&192)===128)break a;
+				if(tmp8>>>0<65536)tmp6=tmp6.concat(String.fromCharCode(tmp8));
+				else{
+					tmp6=tmp6.concat(String.fromCharCode(tmp8-65536>>>10|55296));
+					tmp6=tmp6.concat(String.fromCharCode(tmp8&1023|56320));
+				}
+			}
+			if((tmp7|0)!==-1)continue;
+			__ZNSsD2Ev(tmp1);
+			___setStackPtr(LsavedStack);
+			return tmp6;
+		}
+		break;
+	}
+	__ZNSsD2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return tmp6;
+}
+function __ZN7IpStack14resolveAdapterEii(Larg0,Larg1){
+	var tmp0=null,tmp1=0,tmp2=null;
+	tmp2=__ZN7IpStackL10dnsQueriesE;
+	tmp0=__ZN6client6TArrayIPFviEEixEd(tmp2,(+(Larg0|0)));
+	tmp1=oSlot;
+	tmp2=tmp0[tmp1];
+	tmp0[tmp1]=null;
+	tmp2(Larg1);
+}
+function __ZN6client6TArrayIPFviEEixEd(Larg0,Larg1){
+	oSlot=0+~~Larg1|0;
+	return Larg0;
+}
+function __ZN7IpStack7resolveEPN6client6StringE(Larg0){
+	var LsavedStack=null,tmp1=0,tmp2=null,tmp3=null,tmp4=0,tmp5=null,tmp6=0;
+	LsavedStack=___getStackPtr();
+	tmp5=-16+LsavedStack|0;
+	___setStackPtr(tmp5);
+	tmp1=tmp5|0;
+	__ZNK6client6StringcvSsEv(tmp1,Larg0);
+	tmp5={a0:null,a1:[null],a2:null};
+	__ZN11PromiseDataIiPN6client4_AnyEEC2Ev(tmp5);
+	tmp6=__ZN7IpStackL10dnsQueriesE.indexOf(null);
+	if((tmp6|0)<0){
+		tmp6=__ZN7IpStackL10dnsQueriesE.length;
+		+__ZN7IpStackL10dnsQueriesE.push(tmp5.a1[0]);
+	}else{
+		tmp2=__ZN7IpStackL10dnsQueriesE;
+		tmp3=__ZN6client6TArrayIPFviEEixEd(tmp2,(+(tmp6|0)));
+		tmp4=oSlot;
+		tmp3[tmp4]=tmp5.a1[0];
+	}
+	__ZN7IpStack11resolveWasmERKSsi(tmp1,tmp6);
+	tmp5=tmp5.a0;
+	__ZNSsD2Ev(tmp1);
+	___setStackPtr(LsavedStack);
+	return tmp5;
+}
+function __ZN3tcp6Socket4recvEPN6client10Uint8ArrayEjj(Larg0,Larg1,Larg2,Larg3){
+	var L$poptgepsqueezed7=0,tmp1=0,tmp2=0,L$plcssa=0,tmp4=0;
+	L$poptgepsqueezed7=64+Larg0|0;
+	if(__ZNKSt5dequeIP7tcp_pcbSaIS1_EE5emptyB7v160000Ev_icf(L$poptgepsqueezed7|0)|0)return (((HEAP32[Larg0>>2]|0)|0)!=(0|0)? -7|0: -15|0)|0;
+	if((Larg3|0)!==0){
+		L$plcssa=0;
+		while(1){
+			tmp1=__ZNSt5dequeI4PbufSaIS0_EE5frontEv(L$poptgepsqueezed7)|0;
+			if(!(__ZNK4PbufcvbEv_icf(tmp1)|0))return L$plcssa|0;
+			tmp4=__ZN4Pbuf4readEPN6client10Uint8ArrayEjjj(tmp1,Larg1,L$plcssa+Larg2|0,Larg3-L$plcssa|0,HEAP32[88+Larg0>>2]|0)|0;
+			tmp2=(HEAP32[88+Larg0>>2]|0)+tmp4|0;
+			HEAP32[88+Larg0>>2]=tmp2;
+			L$plcssa=tmp4+L$plcssa|0;
+			if((tmp2|0)===((__ZNK4Pbuf4sizeEv(tmp1)|0)|0)){
+				__ZNSt5dequeI4PbufSaIS0_EE9pop_frontEv(L$poptgepsqueezed7);
+				HEAP32[88+Larg0>>2]=0;
+			}
+			if((__ZNKSt5dequeIP7tcp_pcbSaIS1_EE5emptyB7v160000Ev_icf(L$poptgepsqueezed7|0)|0)^1)if((L$plcssa|0)!==(Larg3|0))continue;
+			break;
+		}
+	}else{
+		L$plcssa=0;
+	}
+	tmp4=HEAP32[Larg0>>2]|0;
+	if((tmp4|0)!=(0|0)){
+		_tcp_recved(tmp4,L$plcssa);
+		return L$plcssa|0;
+	}
+	return L$plcssa|0;
+}
+function __ZN4Pbuf4readEPN6client10Uint8ArrayEjjj(Larg0,Larg1,Larg2,Larg3,Larg4){
+	var Lsmax_select=0,tmp1=null,tmp2=0,tmp3=null,tmp4=0,tmp5=0,L$plcssa12=0,L$plcssa=0;
+	tmp5=HEAP32[Larg0>>2]|0;
+	if((tmp5|0)==(0|0))return 0|0;
+	L$plcssa12=Larg4;
+	while(1){
+		L$plcssa=HEAP16[10+tmp5>>1]&65535;
+		if(L$plcssa12>>>0>=L$plcssa>>>0){
+			tmp5=HEAP32[tmp5>>2]|0;
+			if((tmp5|0)!=(0|0)){
+				L$plcssa12=L$plcssa12-L$plcssa|0;
+				continue;
+			}
+			return 0|0;
+		}
+		break;
+	}
+	L$plcssa=0;
+	while(1){
+		if((L$plcssa12|0)<(HEAP16[10+tmp5>>1]&65535|0)){
+			Lsmax_select=L$plcssa>>>0>Larg3>>>0?L$plcssa|0:Larg3|0;
+			while(1){
+				if((L$plcssa|0)===(Lsmax_select|0))return Lsmax_select|0;
+				tmp1=HEAP8;
+				tmp2=HEAP32[4+tmp5>>2]|0;
+				tmp3=__ZN6client10Uint8ArrayixEd(Larg1,(+(L$plcssa+Larg2>>>0)));
+				tmp4=oSlot;
+				tmp3[tmp4]=tmp1[tmp2+L$plcssa12|0]|0;
+				L$plcssa12=L$plcssa12+1|0;
+				L$plcssa=L$plcssa+1|0;
+				if((L$plcssa12|0)<(HEAP16[10+tmp5>>1]&65535|0))continue;
+				break;
+			}
+			L$plcssa12=0;
+		}
+		tmp5=HEAP32[tmp5>>2]|0;
+		if((tmp5|0)!=(0|0))continue;
+		break;
+	}
+	return L$plcssa|0;
+}
+function __ZN3udp6Socket4recvEPN6client10Uint8ArrayEjj(Larg0,Larg1,Larg2,Larg3,Larg4){
+	var LsavedStack=null,tmp1=null,tmp2=0,tmp3=0,tmp4=0,L$poptgepsqueezed15=0;
+	LsavedStack=___getStackPtr();
+	tmp1=-16+LsavedStack|0;
+	___setStackPtr(tmp1);
+	L$poptgepsqueezed15=20+Larg1|0;
+	if(((__ZNKSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE4sizeB7v160000Ev_icf(L$poptgepsqueezed15)|0)|0)!==0){
+		tmp2=tmp1|0;
+		__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEEC2EOS4_(tmp2,(__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE5frontEv(L$poptgepsqueezed15)|0)|0);
+		tmp3=__ZSt3getB7v160000ILj0E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_(tmp2)|0;
+		if(((__ZNK4Pbuf3getEv(tmp3)|0)|0)!=(0|0)){
+			tmp4=__ZSt3getB7v160000ILj1E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_(tmp2)|0;
+			__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE9pop_frontEv(L$poptgepsqueezed15);
+			HEAP32[44+Larg1>>2]=(HEAP32[44+Larg1>>2]|0)-(__ZNK4Pbuf4sizeEv(tmp3)|0)|0;
+			L$poptgepsqueezed15=__ZN4Pbuf4readEPN6client10Uint8ArrayEjjj(tmp3,Larg2,Larg3,Larg4,0)|0;
+			HEAP32[8+tmp4>>2]=L$poptgepsqueezed15;
+			HEAP32[Larg0>>2]=HEAP32[tmp4>>2]|0;
+			HEAP32[4+Larg0>>2]=HEAP32[4+tmp4>>2]|0;
+			HEAP32[8+Larg0>>2]=L$poptgepsqueezed15;
+		}else __ZN3udp6Socket10PacketInfoC2Ejji(Larg0|0,0,0,0);
+		__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEED2Ev(tmp2);
+	}else __ZN3udp6Socket10PacketInfoC2Ejji(Larg0|0,0,0,((HEAP32[Larg1>>2]|0)|0)!=(0|0)? -7|0: -15|0);
+	___setStackPtr(LsavedStack);
+}
+function ___cxa_throw_wasm_adapter(Larg0,Larg1,Larg2){
+	var LmergedArray=null,tmp1=null;
+	tmp1=[0];
+	tmp1[0]=(Larg1|0);
+	LmergedArray=new Int32Array(2);
+	LmergedArray[0]=Larg2;
+	LmergedArray[1]=Larg0;
+	tmp1=__ZN10__cxxabiv19Exception8allocateIJiRPSt9type_infoRjEEEPS0_DpOT_(LmergedArray,1,tmp1,0,LmergedArray,0);
+	__ZN10__cxxabiv1L8do_throwEPNS_9ExceptionE(tmp1);
+	;
+}
+function __ZN10__cxxabiv19Exception8allocateIJiRPSt9type_infoRjEEEPS0_DpOT_(Larg0,Marg0,Larg1,Marg1,Larg2,Marg2){
+	var tmp0=0,tmp1=null,tmp2=null;
+	tmp1=__ZZN10__cxxabiv19Exception9allocatorEvE6result;
+	if(tmp1!==null)return __ZN10__cxxabiv111IdAllocatorINS_9ExceptionEE8allocateIJiRPSt9type_infoRjEEEPS1_DpOT_(tmp1,Larg0,Marg0,Larg1,Marg1,Larg2,Marg2);
+	tmp1={a0:nullArray,a1:nullArray,i2:0};
+	tmp1.i2=16;
+	tmp2=createArray_struct$p_ZN10__cxxabiv19ExceptionE(16);
+	tmp1.a0=tmp2;
+	tmp0=tmp1.i2|0;
+	tmp2=new Uint8Array(tmp0/1|0);
+	tmp1.a1=tmp2;
+	__ZZN10__cxxabiv19Exception9allocatorEvE6result=tmp1;
+	return __ZN10__cxxabiv111IdAllocatorINS_9ExceptionEE8allocateIJiRPSt9type_infoRjEEEPS1_DpOT_(tmp1,Larg0,Marg0,Larg1,Marg1,Larg2,Marg2);
+}
+function __ZN10__cxxabiv1L8do_throwEPNS_9ExceptionE(Larg0){
+	var tmp0=0,tmp1=0,tmp2=null,tmp3=null;
+	tmp0=Larg0.a4|0;
+	tmp3=HEAP8;
+	tmp1=HEAP32[4+tmp0>>2]|0;
+	tmp3=_cheerpCreate_ZN6client6StringC2EPKc(tmp3,tmp1);
+	tmp2=new CheerpException(tmp3);
+	Larg0.a0=tmp2;
+	throw tmp2;
+	;
+}
+function _cheerpCreate_ZN6client6StringC2EPKc(Larg0,Marg0){
+	var tmp0=0,tmp1=0,tmp2=null,tmp3=0,tmp4=0;
+	tmp2=String();
+	tmp3=0;
+	while(1){
+		tmp0=Larg0[Marg0+tmp3|0]|0;
+		if((tmp0&255)!==0){
+			tmp1=tmp0&255;
+			if(tmp0<<24>-16777216){
+				tmp4=tmp1;
+			}else if((tmp0&255)<192){
+				tmp4=(tmp1&63)+(tmp4<<6)|0;
+			}else if((tmp0&255)<224){
+				tmp4=tmp1&31;
+			}else if((tmp0&255)<240){
+				tmp4=tmp1&15;
+			}else{
+				tmp4=tmp1&7;
+			}
+			tmp3=tmp3+1|0;
+			a:{
+				if((tmp3|0)!==-1)if((Larg0[Marg0+tmp3|0]&192)===128)break a;
+				if(tmp4>>>0<65536)tmp2=tmp2.concat(String.fromCharCode(tmp4));
+				else{
+					tmp2=tmp2.concat(String.fromCharCode(tmp4-65536>>>10|55296));
+					tmp2=tmp2.concat(String.fromCharCode(tmp4&1023|56320));
+				}
+			}
+			if((tmp3|0)!==-1)continue;
+			return tmp2;
+		}
+		break;
+	}
+	return tmp2;
+}
+function __ZN10__cxxabiv111IdAllocatorINS_9ExceptionEE8allocateIJiRPSt9type_infoRjEEEPS1_DpOT_(Larg0,Larg1,Marg1,Larg2,Marg2,Larg3,Marg3){
+	var tmp0=null,tmp1=0,tmp2=0,tmp3=0,tmp4=null,tmp5=0;
+	tmp3=Larg0.i2|0;
+	a:{
+		b:{
+			if((tmp3|0)>1){
+				tmp4=Larg0.a1;
+				tmp5=1;
+				while(1){
+					if((tmp4[tmp5]&255)!==0){
+						tmp5=tmp5+1|0;
+						if((tmp5|0)===(tmp3|0))break b;
+						continue;
+					}
+					break;
+				}
+			}else{
+				tmp5=1;
+			}
+			if((tmp5|0)!==(tmp3|0)){
+				tmp4=Larg0.a1;
+				tmp3=tmp5;
+				break a;
+			}
+		}
+		Larg0.i2=tmp3<<1;
+		tmp4=Larg0.a0;
+		tmp5=__imul(tmp3,96)|0;
+		if(tmp4!==nullArray||0!==0)tmp4=resizeArray_struct$p_ZN10__cxxabiv19ExceptionE(tmp4,tmp4.length,tmp5/48|0);
+		else tmp4=createArray_struct$p_ZN10__cxxabiv19ExceptionE(tmp5/48|0);
+		Larg0.a0=tmp4;
+		tmp5=Larg0.i2|0;
+		tmp4=Larg0.a1;
+		if(tmp4!==nullArray||0!==0)tmp4=(function(){var __old__=tmp4;
+			var __ret__=new Uint8Array(tmp5/1|0);
+			__ret__.set(__old__.subarray(0, Math.min(__ret__.length,__old__.length)));
+			return __ret__;})();
+		else tmp4=new Uint8Array(tmp5/1|0);
+		Larg0.a1=tmp4;
+	}
+	tmp0=Larg0.a0;
+	tmp5=Larg1[Marg1]|0;
+	tmp1=Larg2[Marg2]|0;
+	tmp2=Larg3[Marg3]|0;
+	tmp0[tmp3].a1=null;
+	tmp0[tmp3].i2=tmp5;
+	tmp0[tmp3].a3=null;
+	tmp0[tmp3].a4=tmp1;
+	tmp0[tmp3].a5=null;
+	tmp0[tmp3].i6=tmp2;
+	tmp0[tmp3].i7=1;
+	tmp0[tmp3].i8=0;
+	tmp0[tmp3].a10=null;
+	tmp0[tmp3].a11=null;
+	tmp4[tmp3]=1;
+	return tmp0[tmp3];
+}
+function __ZN12_GLOBAL__N_111raiseSignalEv(){
+	throw new Error('Cheerp: Signal raised');
+	;
+}
+function __ZL16read_nodejs_argsPKN6client6StringE(Larg0){
+	var tmp0=null,tmp1=null,tmp2=null,tmp3=0;
+	tmp0=_cheerpCreate_ZN6client6TArrayIPNS_6StringEEC2Ev();
+	tmp1=(typeof process == 'undefined' ? [] : process.argv) || [];
+	if(((tmp1.length)|0)!==0){
+		tmp3=0;
+		while(1){
+			tmp2=tmp1[(+(tmp3>>>0))];
+			if(tmp2.startsWith(Larg0))+tmp0.push(tmp2.substr((+((Larg0.length)|0))));
+			tmp3=tmp3+1|0;
+			if(tmp3>>>0<(tmp1.length)>>>0)continue;
+			break;
+		}
+	}
+	return tmp0;
+}
+function __ZL11read_to_bufPcjPKN6client6TArrayIPNS0_6StringEEEj(Larg0,Marg0,Larg1,Larg2,Larg3){
+	var tmp0=0;
+	if((Larg2.length)>>>0>Larg3>>>0){
+		tmp0=__ZL14client_to_utf8PcjPKN6client6StringE(Larg0,Marg0,Larg1,Larg2[(+(Larg3>>>0))])|0;
+		if(tmp0>>>0<Larg1>>>0)Larg0[Marg0+tmp0|0]=0;
+		return tmp0+1|0;
+	}
+	return 0|0;
+}
+function __ZL14client_to_utf8PcjPKN6client6StringE(Larg0,Marg0,Larg1,Larg2){
+	var tmp0=0,tmp1=0,Lgeptoindexphi1=0,tmp3=0,tmp4=0,L$psink=0;
+	tmp0=Larg2.length;
+	if((tmp0|0)===0)return 0|0;
+	tmp4=0;
+	tmp3=0;
+	Lgeptoindexphi1=0;
+	while(1){
+		L$psink=Larg2.charCodeAt((+(tmp3>>>0)));
+		a:{
+			if((L$psink& -2048|0)===55296){
+				tmp1=tmp3+1|0;
+				if(tmp1>>>0<tmp0>>>0){
+					tmp3=Larg2.charCodeAt((+(tmp1>>>0)));
+					L$psink=((tmp3|L$psink)&1023)+65536|0;
+					tmp3=tmp1;
+				}else{
+					L$psink=-1;
+				}
+			}else if(L$psink>>>0>1114111){
+				L$psink=-1;
+			}else{
+				if(L$psink>>>0<128){
+					if(tmp4>>>0<Larg1>>>0){
+						Larg0[Marg0+Lgeptoindexphi1|0]=L$psink;
+						Lgeptoindexphi1=Lgeptoindexphi1+1|0;
+						L$psink=1;
+						break a;
+					}
+					L$psink=1;
+					break a;
+				}
+				if(L$psink>>>0<2048){
+					if(tmp4+1>>>0<Larg1>>>0){
+						Larg0[Marg0+Lgeptoindexphi1|0]=L$psink>>>6|192;
+						Larg0[(Marg0+Lgeptoindexphi1|0)+1|0]=L$psink&63|128;
+						Lgeptoindexphi1=Lgeptoindexphi1+2|0;
+						L$psink=2;
+						break a;
+					}
+					L$psink=2;
+					break a;
+				}
+				if(L$psink>>>0<65536){
+					if(tmp4+2>>>0<Larg1>>>0){
+						Larg0[Marg0+Lgeptoindexphi1|0]=L$psink>>>12|224;
+						Larg0[(Marg0+Lgeptoindexphi1|0)+1|0]=L$psink>>>6&63|128;
+						Larg0[(Marg0+Lgeptoindexphi1|0)+2|0]=L$psink&63|128;
+						Lgeptoindexphi1=Lgeptoindexphi1+3|0;
+						L$psink=3;
+						break a;
+					}
+					L$psink=3;
+					break a;
+				}
+			}
+			if(tmp4+3>>>0<Larg1>>>0){
+				Larg0[Marg0+Lgeptoindexphi1|0]=L$psink>>>18|240;
+				Larg0[(Marg0+Lgeptoindexphi1|0)+1|0]=L$psink>>>12&63|128;
+				Larg0[(Marg0+Lgeptoindexphi1|0)+2|0]=L$psink>>>6&63|128;
+				Larg0[(Marg0+Lgeptoindexphi1|0)+3|0]=L$psink&63|128;
+				Lgeptoindexphi1=Lgeptoindexphi1+4|0;
+				L$psink=4;
+			}else{
+				L$psink=4;
+			}
+		}
+		tmp4=tmp4+L$psink|0;
+		tmp3=tmp3+1|0;
+		if(tmp3>>>0<tmp0>>>0)continue;
+		break;
+	}
+	return tmp4|0;
+}
+function _cheerpCreate_ZN6client6TArrayIPNS_6StringEEC2Ev(){
+	return new Array();
+}
+function __ZL8read_envPcjj(Larg0,Marg0,Larg1,Larg2){
+	var tmp0=null;
+	if(__ZGVZL8read_envPcjjE14client_environ|0)return (__ZL11read_to_bufPcjPKN6client6TArrayIPNS0_6StringEEEj(Larg0,Marg0,Larg1,__ZZL8read_envPcjjE14client_environ,Larg2)|0)|0;
+	tmp0=CHEERP_ENV;
+	if(tmp0!==null)tmp0=CHEERP_ENV;
+	else tmp0=__ZL16read_nodejs_argsPKN6client6StringE("--cheerp-env=");
+	__ZZL8read_envPcjjE14client_environ=tmp0;
+	__ZGVZL8read_envPcjjE14client_environ=1;
+	return (__ZL11read_to_bufPcjPKN6client6TArrayIPNS0_6StringEEEj(Larg0,Marg0,Larg1,tmp0,Larg2)|0)|0;
+}
+function __ZN12_GLOBAL__N_117do_syscall_writevEPK5iovecl(Larg0,Larg1){
+	var tmp0=null,tmp1=null,L$plcssa=0,tmp3=0,L$poptgep=0,tmp5=0,tmp6=0;
+	if(__ZGVZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr|0){
+		tmp0=__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr;
+	}else{
+		tmp0=String();
+		__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr=tmp0;
+		__ZGVZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr=1;
+	}
+	tmp1=[null];
+	__ZN12_GLOBAL__N_119CheerpStringBuilder9setStringEPN6client6StringE(tmp1,0,tmp0);
+	if((Larg1|0)>0){
+		tmp3=0;
+		L$plcssa=0;
+		while(1){
+			L$poptgep=(tmp3<<3)+Larg0|0;
+			tmp5=HEAP32[4+L$poptgep>>2]|0;
+			if((tmp5|0)!==0){
+				L$plcssa=tmp5+L$plcssa|0;
+				tmp0=HEAP8;
+				tmp6=HEAP32[L$poptgep>>2]|0;
+				if((tmp5|0)>0){
+					L$poptgep=0;
+					while(1){
+						__ZN12_GLOBAL__N_119CheerpStringBuilder11processCharERjS1_h(tmp1,0,tmp0[tmp6+L$poptgep|0]|0);
+						L$poptgep=L$poptgep+1|0;
+						if((L$poptgep|0)!==(tmp5|0))continue;
+						break;
+					}
+				}
+			}
+			tmp3=tmp3+1|0;
+			if((tmp3|0)!==(Larg1|0))continue;
+			break;
+		}
+	}else{
+		L$plcssa=0;
+	}
+	tmp0=__ZN12_GLOBAL__N_119CheerpStringBuilder9getStringEv(tmp1,0);
+	tmp0=tmp0.split("\n");
+	tmp3=tmp0.length;
+	if((tmp3|0)>1){
+		tmp6=0;
+		tmp5=1;
+		while(1){
+			tmp1=__ZN6client6TArrayIPNS_6StringEEixEd(tmp0,(+(tmp6|0)));
+			L$poptgep=oSlot;
+			console.log(tmp1[L$poptgep]);
+			tmp6=tmp5+1|0;
+			if((tmp6|0)!==(tmp3|0)){
+				L$poptgep=tmp6;
+				tmp6=tmp5;
+				tmp5=L$poptgep;
+				continue;
+			}
+			break;
+		}
+	}
+	tmp1=__ZN6client6TArrayIPNS_6StringEEixEd(tmp0,(+(tmp3-1|0)));
+	tmp5=oSlot;
+	__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr=tmp1[tmp5];
+	return L$plcssa|0;
+}
+function __ZN12_GLOBAL__N_119CheerpStringBuilder9setStringEPN6client6StringE(Larg0,Marg0,Larg1){
+	Larg0[Marg0]=Larg1;
+}
+function __ZN12_GLOBAL__N_119CheerpStringBuilder11processCharERjS1_h(Larg0,Marg0,Larg1){
+	var tmp0=null,tmp1=null,tmp2=0,L$psink=0,tmp4=0;
+	L$psink=__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9remaining|0;
+	tmp4=Larg1&255;
+	tmp0=1068800|0;
+	tmp1=1068856|0;
+	a:if((Larg1&255)<192){
+		if((L$psink|0)===0){
+			if(Larg1<<24<=-16777216)___assert_fail(1068868|0,tmp0,79,tmp1);
+			;
+			__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9codepoint=tmp4;
+		}else{
+			if((tmp4&192|0)!==128)___assert_fail(1068780|0,tmp0,65,tmp1);
+			;
+			tmp4=(__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9codepoint<<6)+(tmp4&63)|0;
+			__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9codepoint=tmp4;
+			L$psink=L$psink-1|0;
+			__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9remaining=L$psink;
+			if((L$psink|0)!==0)break a;
+		}
+		__ZN12_GLOBAL__N_119CheerpStringBuilder15outputCodepointEj(Larg0,Marg0,tmp4);
+	}else{
+		if((L$psink|0)!==0)___assert_fail(1068880|0,tmp0,90,tmp1);
+		;
+		if((Larg1&255)<224){
+			tmp2=31;
+			L$psink=1;
+		}else{
+			tmp2=(Larg1&255)<240?15|0:7|0;
+			L$psink=(Larg1&255)<240?2|0:3|0;
+		}
+		__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9remaining=L$psink;
+		__ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9codepoint=tmp2&tmp4;
+	}
+}
+function __ZN12_GLOBAL__N_119CheerpStringBuilder9getStringEv(Larg0,Marg0){
+	return Larg0[Marg0];
+}
+function __ZN12_GLOBAL__N_119CheerpStringBuilder15outputCodepointEj(Larg0,Marg0,Larg1){
+	var L$psink=null;
+	a:{
+		if(Larg1>>>0<65536){
+			if((Larg1|0)===0)break a;
+			L$psink=Larg0[Marg0];
+			L$psink=L$psink.concat(String.fromCharCode(Larg1));
+		}else{
+			L$psink=Larg0[Marg0];
+			L$psink=L$psink.concat(String.fromCharCode((Larg1-65536>>>10)+55296|0));
+			Larg0[Marg0]=L$psink;
+			L$psink=L$psink.concat(String.fromCharCode((Larg1&1023)+56320|0));
+		}
+		Larg0[Marg0]=L$psink;
+	}
+}
+function ___wrapper___ZL8read_envPcjj(Larg0,Larg1,Larg2){
+	return (__ZL8read_envPcjj(HEAP8,Larg0>>0,Larg1,Larg2)|0)|0;
+}
+function ___wrapper___Z9output_jsPhi(Larg0,Larg1){
+	__Z9output_jsPhi(HEAP8,Larg0>>0,Larg1);
+}
+var __ZN7IpStackL10dnsQueriesE=null;
+var __ZGV28taskToPromiseHelperAllocatorIiE=0;
+var __Z28taskToPromiseHelperAllocatorIiE$p1=nullArray;
+var __Z28taskToPromiseHelperAllocatorIiE$p2=0;
+var __Z28taskToPromiseHelperAllocatorIiE$p0=nullArray;
+var __ZZN10__cxxabiv19Exception9allocatorEvE6result=null;
+var __ZGVZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr=0;
+var __ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE4curr=null;
+var __ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9remaining=0;
+var __ZZN12_GLOBAL__N_117do_syscall_writevEPK5ioveclE9codepoint=0;
+var __ZGVZL8read_envPcjjE14client_environ=0;
+var __ZZL8read_envPcjjE14client_environ=null;
+var __ZL9output_cb=null;
+var __ZN6cheerp20EscapedResourcesListIN6client13EventListenerEE9resourcesE=null;
+function constructor_struct$p_ZN10__cxxabiv19ExceptionE(){
+	this.a0=null;
+	this.a1=null;
+	this.i2=0;
+	this.a3=null;
+	this.a4=0;
+	this.a5=null;
+	this.i6=0;
+	this.i7=0;
+	this.i8=0;
+	this.a9=null;
+	this.a10=null;
+	this.a11=null;
+}
+function create__ZN3tcp6Socket12waitOutgoingEv$pFrame(obj){
+	var a=[];
+	a[0]=obj;
+	obj.o=0;
+	obj.a=a;
+	a[1]=obj.a2;
+	obj.a2.o=1;
+	obj.a2.a=a;
+	return obj;}
+function create__ZN3udp6Socket12waitIncomingEv$pFrame(obj){
+	var a=[];
+	a[0]=obj;
+	obj.o=0;
+	obj.a=a;
+	a[1]=obj.a2;
+	obj.a2.o=1;
+	obj.a2.a=a;
+	return obj;}
+function create__ZN3tcp6Socket12waitIncomingEv$pFrame(obj){
+	var a=[];
+	a[0]=obj;
+	obj.o=0;
+	obj.a=a;
+	a[1]=obj.a2;
+	obj.a2.o=1;
+	obj.a2.a=a;
+	return obj;}
+function create__Z19taskToPromiseHelperIiE6Thread4TaskIT_Ei$pFrame(obj){
+	var a=[];
+	a[0]=obj;
+	obj.o=0;
+	obj.a=a;
+	a[1]=obj.a2;
+	obj.a2.o=1;
+	obj.a2.a=a;
+	return obj;}
+function createArray_struct$p_ZN10__cxxabiv19ExceptionE(e){
+	var r=[];
+	for(var i=0;i<e;i++)
+	r[i]=new constructor_struct$p_ZN10__cxxabiv19ExceptionE();
+	return r;
+}
+function resizeArray_struct$p_ZN10__cxxabiv19ExceptionE(r,s,e){
+	for(var i=s;i<e;i++)
+	r[i]=new constructor_struct$p_ZN10__cxxabiv19ExceptionE();
+	return r;
+}
+function createPointerArray(r,s,e,v){for(var i=s;i<e;i++)r[i]=v;return r;}
+function cheerpCreateClosure(func, obj){return function(){var a=Array.prototype.slice.call(arguments);a.unshift(obj);return func.apply(null,a);};}
+function cheerpCreateClosureSplit(func, obj, objo){return function(){var a=Array.prototype.slice.call(arguments);a.unshift(obj,objo);return func.apply(null,a);};}
+function CheerpException(m){
+	var instance=new Error('Uncaught C++ exception: '+m);
+	instance.name='CheerpException';
+	Object.setPrototypeOf(instance,Object.getPrototypeOf(this));
+	if(Error.captureStackTrace){
+		Error.captureStackTrace(instance, CheerpException);
+	}
+	return instance;
+}
+CheerpException.prototype=Object.create(Error.prototype);
+function growLinearMemory(pages){
+	try{
+		var ret=memory.grow(pages);
+		__heap=memory.buffer;
+		assignHeaps(__heap);
+		return ret;
+	}catch(e){
+		return -1;
+	}
+}
+var IpStack={
+	TCPSocket:null,
+	UDPSocket:null,
+	down:null,
+	dumpIP:null,
+	init:null,
+	input:null,
+	output:null,
+	parseIP:null,
+	resolve:null,
+	up:null,
+};
+var HEAP8=null,HEAP16=null,HEAP32=null,__asm=null,__heap=null;function __dummy(){throw new Error('this should be unreachable');};
+var memory=new WebAssembly.Memory({initial:30,maximum:2048});
+var __start=null;
+var ___assert_fail=null;
+var __ZN7IpStack11resolveWasmERKSsi=null;
+var __ZNSsD2Ev=null;
+var __ZNSsC2B7v160000Ev=null;
+var __ZNSs9push_backEc=null;
+var __ZN2ip4ntosEi=null;
+var __ZNKSs5c_strB7v160000Ev=null;
+var __ZN2ip4stonERKSs=null;
+var __ZN3udp6SocketD2Ev=null;
+var __ZdlPv=null;
+var __Znwj=null;
+var __ZN3udp6SocketC2Ev=null;
+var __ZN3tcp6SocketD2Ev=null;
+var __ZN3tcp6SocketC2Ev=null;
+var _pbuf_alloc=null;
+var __ZN7IpStackL7doInputEP4pbuf=null;
+var __Z4downv=null;
+var __ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEEC2B7v160000Ev=null;
+var __ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE7emplaceB7v160000IJSsSsEEES2_ISt14__map_iteratorISt15__tree_iteratorISt12__value_typeISsSsEPSt11__tree_nodeISB_PvElEEbEDpOT_=null;
+var __ZNSsaSB7v160000EOSs=null;
+var __Z2upRKSsRKSt3mapISsSsSt4lessISsESaISt4pairIS_SsEEES0_=null;
+var __ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEED2B7v160000Ev=null;
+var __Z4initv=null;
+var __Z16udpecho_raw_initv=null;
+var __Z16tcpecho_raw_initv=null;
+var _sys_check_timeouts=null;
+var __ZN3udp6Socket5closeEv=null;
+var __ZL6map_ipj=null;
+var __ZNSt6vectorIhSaIhEEC2Ej=null;
+var __ZNSt6vectorIhSaIhEEixB7v160000Ej=null;
+var __ZNSt4spanIKhLj4294967295EEC2B7v160000IRSt6vectorIhSaIhEEEEOT_=null;
+var __ZN3udp6Socket6sendtoESt4spanIKhLj4294967295EEii=null;
+var __ZNSt6vectorIhSaIhEED2B7v160000Ev=null;
+var __ZNKSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE4sizeB7v160000Ev_icf=null;
+var __ZN3udp6Socket10PacketInfoC2Ejji=null;
+var __ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE5frontEv=null;
+var __ZNSt4pairI4PbufN3udp6Socket10PacketInfoEEC2EOS4_=null;
+var __ZSt3getB7v160000ILj0E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_=null;
+var __ZNK4Pbuf3getEv=null;
+var __ZSt3getB7v160000ILj1E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_=null;
+var __ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE9pop_frontEv=null;
+var __ZNK4Pbuf4sizeEv=null;
+var __ZNSt4pairI4PbufN3udp6Socket10PacketInfoEED2Ev=null;
+var __ZN3udp6Socket12waitIncomingEv=null;
+var __ZN4TaskIiED2Ev=null;
+var __ZN4TaskIiEC2EOS0_=null;
+var __Z19taskToPromiseHelperIiE6Thread4TaskIT_Ei=null;
+var __ZN3udp6Socket4bindEii=null;
+var __ZN3tcp6Socket13readAvailableEv=null;
+var __ZN3tcp6Socket6listenEv=null;
+var __ZN3tcp6Socket4bindEii=null;
+var __ZN3tcp6Socket10shutdownRxEv=null;
+var __ZN3tcp6Socket10shutdownTxEv=null;
+var __ZN3tcp6Socket5closeEv=null;
+var __ZN3tcp6Socket6acceptEv=null;
+var __ZNK4PbufcvbEv_icf=null;
+var __ZN3tcp6Socket13getRemoteAddrEv=null;
+var __ZN3tcp6Socket13getRemotePortEv=null;
+var __ZN3tcp6SocketC2EOS0_=null;
+var __ZN3tcp6Socket14writeAvailableEv=null;
+var __ZN3tcp6Socket4sendESt4spanIKhLj4294967295EE=null;
+var __ZNKSt5dequeIP7tcp_pcbSaIS1_EE5emptyB7v160000Ev_icf=null;
+var __ZNSt5dequeI4PbufSaIS0_EE5frontEv=null;
+var __ZNSt5dequeI4PbufSaIS0_EE9pop_frontEv=null;
+var _tcp_recved=null;
+var __ZN3tcp6Socket7connectEii=null;
+var __ZN3tcp6Socket12waitOutgoingEv=null;
+var __ZN3tcp6Socket12waitIncomingEv=null;
+var ___getStackPtr=null;
+var ___setStackPtr=null;
+IpStack.TCPSocket=__dummy;
+IpStack.UDPSocket=__dummy;
+IpStack.down=__dummy;
+IpStack.dumpIP=__dummy;
+IpStack.init=__dummy;
+IpStack.input=__dummy;
+IpStack.output=__dummy;
+IpStack.parseIP=__dummy;
+IpStack.resolve=__dummy;
+IpStack.up=__dummy;
+export default function(tmp1){
+	CHEERP_ENV=(typeof tmp1 == 'undefined' ? null : tmp1.env) || null;
+	CHEERP_ARGV=(typeof tmp1 == 'undefined' ? null : tmp1.argv) || null;
+	return ((tmp1&&tmp1.buffer)?
+	Promise.resolve(tmp1.buffer):
+	fetchBuffer((tmp1&&tmp1.absPath)?tmp1.absPath:new URL('ipstack.wasm', import.meta.url))).then(tmp1=>
+	WebAssembly.instantiate(tmp1,
+	{i:{
+			memory:memory,
+			___ctor__Z28taskToPromiseHelperAllocatorIiE:___ctor__Z28taskToPromiseHelperAllocatorIiE,
+			___ctor__ZN7IpStackL10dnsQueriesE:___ctor__ZN7IpStackL10dnsQueriesE,
+			___cxa_throw_wasm_adapter:___cxa_throw_wasm_adapter,
+			__ZN12_GLOBAL__N_117do_syscall_writevEPK5iovecl:__ZN12_GLOBAL__N_117do_syscall_writevEPK5iovecl,
+			__ZN12_GLOBAL__N_111raiseSignalEv:__ZN12_GLOBAL__N_111raiseSignalEv,
+			___wrapper___Z9output_jsPhi:___wrapper___Z9output_jsPhi,
+			__ZN7IpStack14resolveAdapterEii:__ZN7IpStack14resolveAdapterEii,
+			_sys_now:_sys_now,
+			__Z14start_timeoutsv:__Z14start_timeoutsv,
+			___wrapper___ZL8read_envPcjj:___wrapper___ZL8read_envPcjj,
+			__Z21taskToPromiseHelperJsIiEvT_i:__Z21taskToPromiseHelperJsIiEvT_i,
+			growLinearMemory:growLinearMemory,
+		}})
+	).then(tmp1=>{
+		__asm=tmp1.instance.exports;
+		__heap=memory.buffer;
+		assignHeaps(__heap);
+		__start=__asm.__start;
+		___assert_fail=__asm.___assert_fail;
+		__ZN7IpStack11resolveWasmERKSsi=__asm.__ZN7IpStack11resolveWasmERKSsi;
+		__ZNSsD2Ev=__asm.__ZNSsD2Ev;
+		__ZNSsC2B7v160000Ev=__asm.__ZNSsC2B7v160000Ev;
+		__ZNSs9push_backEc=__asm.__ZNSs9push_backEc;
+		__ZN2ip4ntosEi=__asm.__ZN2ip4ntosEi;
+		__ZNKSs5c_strB7v160000Ev=__asm.__ZNKSs5c_strB7v160000Ev;
+		__ZN2ip4stonERKSs=__asm.__ZN2ip4stonERKSs;
+		__ZN3udp6SocketD2Ev=__asm.__ZN3udp6SocketD2Ev;
+		__ZdlPv=__asm.__ZdlPv;
+		__Znwj=__asm.__Znwj;
+		__ZN3udp6SocketC2Ev=__asm.__ZN3udp6SocketC2Ev;
+		__ZN3tcp6SocketD2Ev=__asm.__ZN3tcp6SocketD2Ev;
+		__ZN3tcp6SocketC2Ev=__asm.__ZN3tcp6SocketC2Ev;
+		_pbuf_alloc=__asm._pbuf_alloc;
+		__ZN7IpStackL7doInputEP4pbuf=__asm.__ZN7IpStackL7doInputEP4pbuf;
+		__Z4downv=__asm.__Z4downv;
+		__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEEC2B7v160000Ev=__asm.__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEEC2B7v160000Ev;
+		__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE7emplaceB7v160000IJSsSsEEES2_ISt14__map_iteratorISt15__tree_iteratorISt12__value_typeISsSsEPSt11__tree_nodeISB_PvElEEbEDpOT_=__asm.__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEE7emplaceB7v160000IJSsSsEEES2_ISt14__map_iteratorISt15__tree_iteratorISt12__value_typeISsSsEPSt11__tree_nodeISB_PvElEEbEDpOT_;
+		__ZNSsaSB7v160000EOSs=__asm.__ZNSsaSB7v160000EOSs;
+		__Z2upRKSsRKSt3mapISsSsSt4lessISsESaISt4pairIS_SsEEES0_=__asm.__Z2upRKSsRKSt3mapISsSsSt4lessISsESaISt4pairIS_SsEEES0_;
+		__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEED2B7v160000Ev=__asm.__ZNSt3mapISsSsSt4lessISsESaISt4pairIKSsSsEEED2B7v160000Ev;
+		__Z4initv=__asm.__Z4initv;
+		__Z16udpecho_raw_initv=__asm.__Z16udpecho_raw_initv;
+		__Z16tcpecho_raw_initv=__asm.__Z16tcpecho_raw_initv;
+		_sys_check_timeouts=__asm._sys_check_timeouts;
+		__ZN3udp6Socket5closeEv=__asm.__ZN3udp6Socket5closeEv;
+		__ZL6map_ipj=__asm.__ZL6map_ipj;
+		__ZNSt6vectorIhSaIhEEC2Ej=__asm.__ZNSt6vectorIhSaIhEEC2Ej;
+		__ZNSt6vectorIhSaIhEEixB7v160000Ej=__asm.__ZNSt6vectorIhSaIhEEixB7v160000Ej;
+		__ZNSt4spanIKhLj4294967295EEC2B7v160000IRSt6vectorIhSaIhEEEEOT_=__asm.__ZNSt4spanIKhLj4294967295EEC2B7v160000IRSt6vectorIhSaIhEEEEOT_;
+		__ZN3udp6Socket6sendtoESt4spanIKhLj4294967295EEii=__asm.__ZN3udp6Socket6sendtoESt4spanIKhLj4294967295EEii;
+		__ZNSt6vectorIhSaIhEED2B7v160000Ev=__asm.__ZNSt6vectorIhSaIhEED2B7v160000Ev;
+		__ZNKSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE4sizeB7v160000Ev_icf=__asm.__ZNKSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE4sizeB7v160000Ev_icf;
+		__ZN3udp6Socket10PacketInfoC2Ejji=__asm.__ZN3udp6Socket10PacketInfoC2Ejji;
+		__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE5frontEv=__asm.__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE5frontEv;
+		__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEEC2EOS4_=__asm.__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEEC2EOS4_;
+		__ZSt3getB7v160000ILj0E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_=__asm.__ZSt3getB7v160000ILj0E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_;
+		__ZNK4Pbuf3getEv=__asm.__ZNK4Pbuf3getEv;
+		__ZSt3getB7v160000ILj1E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_=__asm.__ZSt3getB7v160000ILj1E4PbufN3udp6Socket10PacketInfoEEONSt13tuple_elementIXT_ESt4pairIT0_T1_EE4typeEOS8_;
+		__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE9pop_frontEv=__asm.__ZNSt5dequeISt4pairI4PbufN3udp6Socket10PacketInfoEESaIS5_EE9pop_frontEv;
+		__ZNK4Pbuf4sizeEv=__asm.__ZNK4Pbuf4sizeEv;
+		__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEED2Ev=__asm.__ZNSt4pairI4PbufN3udp6Socket10PacketInfoEED2Ev;
+		__ZN3udp6Socket12waitIncomingEv=__asm.__ZN3udp6Socket12waitIncomingEv;
+		__ZN4TaskIiED2Ev=__asm.__ZN4TaskIiED2Ev;
+		__ZN4TaskIiEC2EOS0_=__asm.__ZN4TaskIiEC2EOS0_;
+		__Z19taskToPromiseHelperIiE6Thread4TaskIT_Ei=__asm.__Z19taskToPromiseHelperIiE6Thread4TaskIT_Ei;
+		__ZN3udp6Socket4bindEii=__asm.__ZN3udp6Socket4bindEii;
+		__ZN3tcp6Socket13readAvailableEv=__asm.__ZN3tcp6Socket13readAvailableEv;
+		__ZN3tcp6Socket6listenEv=__asm.__ZN3tcp6Socket6listenEv;
+		__ZN3tcp6Socket4bindEii=__asm.__ZN3tcp6Socket4bindEii;
+		__ZN3tcp6Socket10shutdownRxEv=__asm.__ZN3tcp6Socket10shutdownRxEv;
+		__ZN3tcp6Socket10shutdownTxEv=__asm.__ZN3tcp6Socket10shutdownTxEv;
+		__ZN3tcp6Socket5closeEv=__asm.__ZN3tcp6Socket5closeEv;
+		__ZN3tcp6Socket6acceptEv=__asm.__ZN3tcp6Socket6acceptEv;
+		__ZNK4PbufcvbEv_icf=__asm.__ZNK4PbufcvbEv_icf;
+		__ZN3tcp6Socket13getRemoteAddrEv=__asm.__ZN3tcp6Socket13getRemoteAddrEv;
+		__ZN3tcp6Socket13getRemotePortEv=__asm.__ZN3tcp6Socket13getRemotePortEv;
+		__ZN3tcp6SocketC2EOS0_=__asm.__ZN3tcp6SocketC2EOS0_;
+		__ZN3tcp6Socket14writeAvailableEv=__asm.__ZN3tcp6Socket14writeAvailableEv;
+		__ZN3tcp6Socket4sendESt4spanIKhLj4294967295EE=__asm.__ZN3tcp6Socket4sendESt4spanIKhLj4294967295EE;
+		__ZNKSt5dequeIP7tcp_pcbSaIS1_EE5emptyB7v160000Ev_icf=__asm.__ZNKSt5dequeIP7tcp_pcbSaIS1_EE5emptyB7v160000Ev_icf;
+		__ZNSt5dequeI4PbufSaIS0_EE5frontEv=__asm.__ZNSt5dequeI4PbufSaIS0_EE5frontEv;
+		__ZNSt5dequeI4PbufSaIS0_EE9pop_frontEv=__asm.__ZNSt5dequeI4PbufSaIS0_EE9pop_frontEv;
+		_tcp_recved=__asm._tcp_recved;
+		__ZN3tcp6Socket7connectEii=__asm.__ZN3tcp6Socket7connectEii;
+		__ZN3tcp6Socket12waitOutgoingEv=__asm.__ZN3tcp6Socket12waitOutgoingEv;
+		__ZN3tcp6Socket12waitIncomingEv=__asm.__ZN3tcp6Socket12waitIncomingEv;
+		___getStackPtr=__asm.___getStackPtr;
+		___setStackPtr=__asm.___setStackPtr;
+		IpStack.TCPSocket=function (){
+			this.this=__ZN7IpStack9TCPSocket3newEv();
+		};
+		IpStack.TCPSocket.prototype.accept=function(){
+			return __ZN7IpStack9TCPSocket6acceptEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.bind=function(a0){
+			return __ZN7IpStack9TCPSocket4bindEi(this.this,a0);
+		};
+		IpStack.TCPSocket.prototype.close=function(){
+			return __ZN7IpStack9TCPSocket5closeEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.connect=function(a0,a1){
+			return __ZN7IpStack9TCPSocket7connectEii(this.this,a0,a1);
+		};
+		IpStack.TCPSocket.prototype.delete=function(){
+			return __ZN7IpStack9TCPSocket6deleteEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.listen=function(){
+			return __ZN7IpStack9TCPSocket6listenEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.readAvailable=function(){
+			return __ZN7IpStack9TCPSocket13readAvailableEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.recv=function(a0,a1,a2){
+			return __ZN7IpStack9TCPSocket4recvEPN6client10Uint8ArrayEjj(this.this,a0,a1,a2);
+		};
+		IpStack.TCPSocket.prototype.send=function(a0,a1,a2){
+			return __ZN7IpStack9TCPSocket4sendEPN6client10Uint8ArrayEjj(this.this,a0,a1,a2);
+		};
+		IpStack.TCPSocket.prototype.shutdownRx=function(){
+			return __ZN7IpStack9TCPSocket10shutdownRxEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.shutdownTx=function(){
+			return __ZN7IpStack9TCPSocket10shutdownTxEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.waitIncoming=function(){
+			return __ZN7IpStack9TCPSocket12waitIncomingEv(this.this);
+		};
+		IpStack.TCPSocket.prototype.waitOutgoing=function(){
+			return __ZN7IpStack9TCPSocket12waitOutgoingEv(this.this);
+		};
+		Object.defineProperty(IpStack.TCPSocket,'Eagain',{
+			get:__ZN7IpStack9TCPSocket19__cheerp_get_EagainEv,
+		});
+		Object.defineProperty(IpStack.TCPSocket,'Einval',{
+			get:__ZN7IpStack9TCPSocket19__cheerp_get_EinvalEv,
+		});
+		IpStack.UDPSocket=function (){
+			this.this=__ZN7IpStack9UDPSocket3newEv();
+		};
+		IpStack.UDPSocket.prototype.bind=function(a0){
+			return __ZN7IpStack9UDPSocket4bindEi(this.this,a0);
+		};
+		IpStack.UDPSocket.prototype.close=function(){
+			return __ZN7IpStack9UDPSocket5closeEv(this.this);
+		};
+		IpStack.UDPSocket.prototype.delete=function(){
+			return __ZN7IpStack9UDPSocket6deleteEv(this.this);
+		};
+		IpStack.UDPSocket.prototype.recv=function(a0,a1,a2,a3){
+			return __ZN7IpStack9UDPSocket4recvEPN6client10Uint8ArrayEjjPNS1_8AddrInfoE(this.this,a0,a1,a2,a3);
+		};
+		IpStack.UDPSocket.prototype.sendto=function(a0,a1,a2){
+			return __ZN7IpStack9UDPSocket6sendtoEPN6client10Uint8ArrayEii(this.this,a0,a1,a2);
+		};
+		IpStack.UDPSocket.prototype.waitIncoming=function(){
+			return __ZN7IpStack9UDPSocket12waitIncomingEv(this.this);
+		};
+		Object.defineProperty(IpStack.UDPSocket,'Eagain',{
+			get:__ZN7IpStack9UDPSocket19__cheerp_get_EagainEv,
+		});
+		Object.defineProperty(IpStack.UDPSocket,'Einval',{
+			get:__ZN7IpStack9UDPSocket19__cheerp_get_EinvalEv,
+		});
+		IpStack.down=__ZN7IpStack4downEv;
+		IpStack.dumpIP=__ZN7IpStack6dumpIPEi;
+		IpStack.init=__ZN7IpStack4initEPN6client9UpOptionsE;
+		IpStack.input=__ZN7IpStack5inputEPN6client10Uint8ArrayE;
+		IpStack.output=__ZN7IpStack6outputEPFvPN6client10Uint8ArrayEE;
+		IpStack.parseIP=__ZN7IpStack7parseIPEPN6client6StringE;
+		IpStack.resolve=__ZN7IpStack7resolveEPN6client6StringE;
+		IpStack.up=__ZN7IpStack2upEPN6client9UpOptionsE;
+		__asm.__start();
+		var __export={
+			IpStack:IpStack,
+		};
+		return __export;
+	});
+}
+function assignHeaps(tmp1){
+	HEAP8=new Uint8Array(tmp1);
+	HEAP16=new Uint16Array(tmp1);
+	HEAP32=new Int32Array(tmp1);
+}

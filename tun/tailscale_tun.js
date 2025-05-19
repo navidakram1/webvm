@@ -12,6 +12,9 @@ export const State = {
 	Running: 6,
 };
 
+const {IpStacke}= await ipStackAwait()
+IpStacke.init();
+
 export async function init() {
 	const {IpStack} = await ipStackAwait();
 	IpStack.init();
@@ -81,8 +84,8 @@ export async function init() {
 
 
 	return {
-		tcpSocket: IpStack.TCPSocket.create,
-		udpSocket: IpStack.UDPSocket.create,
+		tcpSocket: IpStack.TCPSocket,
+		udpSocket: IpStack.UDPSocket,
 		parseIP: IpStack.parseIP,
 		dumpIP: IpStack.dumpIP,
 		resolve: IpStack.resolve,
@@ -103,5 +106,7 @@ export async function init() {
 		logout: () => ipn.logout(),
 		listeners
 	};
+
 }
 
+export const dumpIP = IpStacke.dumpIP;

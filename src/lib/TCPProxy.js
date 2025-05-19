@@ -19,6 +19,7 @@ export class TCPProxy {
     this.onOutboundData = null;
     this.onInboundClose = null;
     this.onOutboundClose = null;
+    this.onClose = null;
     this.onError = null;
   }
 
@@ -53,6 +54,8 @@ export class TCPProxy {
             const {value: incomingSocket, done} = await this._reader.read();
             if (done) {
               console.log(`Server stopped accepting connections`);
+              this._reader.releaseLock();
+              this._reader = null;
               break;
             }
             this._handleIncomingConnection(incomingSocket); // can get client ID here if we have use for that later
@@ -62,8 +65,6 @@ export class TCPProxy {
           if (this.onError) {
             this.onError(e);
           }
-        } finally {
-          this._reader.releaseLock();
         }
       })();
       return openInfo;
@@ -291,14 +292,18 @@ export class TCPProxy {
     console.log(`Closing TCP proxy`);
     for (const [id, client] of this.inboundConnections.entries()) {
       try {
-        await client.close();
+        if (client.socket) {
+          await client.close();
+        }
       } catch (e) {
         console.error(`Error closing inbound connection ${id}: `, e);
       }
     }
     for (const [id, client] of this.outboundConnections.entries()) {
       try {
-        await client.close();
+        if (client.socket) {
+          await client.close();
+        }
       } catch (e) {
         console.error(`Error closing outbound connection ${id}: `, e);
       }
@@ -312,11 +317,17 @@ export class TCPProxy {
 
     if (this.server) {
       try {
+        // fixed Server close error by cancelling locked streams before close (sends done signal to loop)
+        await this._reader.cancel();
         await this.server.close();
       } catch (e) {
         console.error(`Error closing server: `, e);
       }
       this.server = null;
+    }
+
+    if (this.onClose) {
+      this.onClose();
     }
 
     console.log("TCP Proxy closed");

@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "CX_URL=assets/cx.esm.js vite build",
-		"postbuild": "node ./post_process.cjs && cp -r .well-known/ build/",
+		"postbuild": "node ./post_process.cjs && cp -r .well-known/ build/ && cp dSockets.js build/",
 		"iwa": "nginx -p . -c nginx.conf"
 	},
 	"devDependencies": {

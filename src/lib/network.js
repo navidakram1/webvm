@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import { TCPSocketClient } from '../../dSockets';
 
 let authKey = undefined;
 let controlUrl = undefined;
@@ -156,7 +157,5 @@ export const networkData = { currentIp: null, connectionState: connectionState, 
 //
 // IWA test
 // 
-let host = "127.0.0.1"; // localhost
-let port = 4321;
-export const directSocketsInterface = { host: host, port: port };
+export const directSocketsInterface = { host: null, port: null, options: null};
 

@@ -11,7 +11,6 @@
 	import { introMessage, errorMessage, unexpectedErrorMessage } from '$lib/messages.js'
 	import { displayConfig, handleToolImpl } from '$lib/anthropic.js'
 	import { tryPlausible } from '$lib/plausible.js'
-	import { TCPProxy } from '$lib/TCPProxy.js'
 	import { TCPSocketClient } from '$lib/TCPSocketClient.js'
 
 	export let configObj = null;
@@ -192,75 +191,8 @@
 		if(display)
 			setScreenSize(display);
 	}
-	async function initProxy() {
-		const proxy = new TCPProxy();
-		proxy.onInboundConnect = (id, openInfo) => {
-		// 
-		// ideally link to destination here. Could be hard set or dynamically based on parameters
-		// 
-			console.log(`New inbound connection ${id} from ${openInfo.remoteAddress}:${openInfo.remotePort}`);
-		};
-		proxy.onOutboundConnect = (id, openInfo) => {
-			console.log(`New Outbound connection ${id} to ${openInfo.remoteAddress}:${openInfo.remotePort}`);
-		};
-		proxy.onInboundData = (id, data) => {
-			console.log(`[INBOUND] received from client ${id}: `, data);
-		};
-		proxy.onOutboundData = (id, data) => {
-			console.log(`[OUTBOUND] Received data from server ${id}: `, data);
-		};
-		proxy.onInboundClose = (id) => {
-			console.log(`Closed inbound connection ${id}`);
-		};
-		proxy.onOutboundClose = (id) => {
-			console.log(`Closed outbound connection ${id}`);
-		};
-		proxy.onError = (type, id, e) => {
-			console.error(`Error in ${type} ${id}: `, e);
-		};
-		await proxy.start('0.0.0.0', {localPort: 33000});
-		return proxy;
-	}
-	async function createMockInbound(proxy) {
-		const { readable, writable } = new TransformStream();
-		const mockSocket = {
-			opened: Promise.resolve({
-				readable,
-				writable,
-				remoteAddress: '127.0.0.1',
-				remotePort: 12345,
-				localAddress: '127.0.0.1',
-				localPort: 33000
-			})
-		};
-
-		// need to manually trigger event cause its fake so startReading's loop won't catch this as real connection
-		return proxy.acceptConnection(mockSocket);
-	}
 	async function initTerminal()
 	{
-		const proxy = await initProxy();
-		console.log(`We have proxy`);
-
-		const mockInboundID = await createMockInbound(proxy);
-		console.log(`Created mock inbound connection ${mockInboundID}`);
-
-		const link = await proxy.link(mockInboundID, `google.com`, 80);
-		console.log(`Linked mock client ${mockInboundID} to google ${link.outboundID}`);
-
-		const inboundClient = proxy.inboundConnections.get(mockInboundID);
-		if (inboundClient) {
-		 console.log(`We have a client`);
-		 const someData =
-		 				"GET / HTTP/1.1\r\n" +
-		 				"Host: google.com\r\n" +
-		 				"Connection: close\r\n\r\n";
-		 await inboundClient.send(someData);
-		 console.log(`Sent data to ${link.outboundID}`);
-		}
-		// await proxy.close();
-
-
 		const { Terminal } = await import('@xterm/xterm');
 		const { FitAddon } = await import('@xterm/addon-fit');
 		const { WebLinksAddon } = await import('@xterm/addon-web-links');

@@ -17,6 +17,7 @@
  //
  // -- MODIFIED TO JS FOR WEBVM --
  // 
+ //
 
 export async function readStream(
   reader,
@@ -79,3 +80,12 @@ export async function collectConnections(
   await server.closed;
   console.log('Closed');
 }
+
+
+// export async function autoConfSockets({host, port, options}) {
+//   client = new TCPSocketClient(host, port, options);
+//   client.connect();
+//   client._startReading();
+
+//   return client;
+// }

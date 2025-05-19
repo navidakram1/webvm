@@ -862,6 +862,11 @@ function webReadAsyncLoop(fileData, fileOffset, buf, off, len, fileRef, startChu
 
 function webReadAsyncEnd(fileData, fileOffset, buf, off, len, cb)
 {
+	if(buf.length == 0)
+	{
+		// Defend against buffer invalidation
+		return cb(/*EFAULT*/-14);
+	}
 	// All chunks are now loaded
 	var chunkSize = fileData.parent.chunkSize;
 	var curChunk = fileOffset / chunkSize | 0;
@@ -2382,7 +2387,7 @@ function cheerpOSClose(fds, fd, cb)
 		cb();
 }
 
-function socketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
+function httpSocketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
 {
 	assert(len != 0);
 	let cnt = off;
@@ -2390,11 +2395,16 @@ function socketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
 	if(fileData.currData === null){
 		return cb(0);
 	}
-	return socketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb);
+	return httpSocketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb);
 }
 
-function socketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb)
+function httpSocketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb)
 {
+	if(buf.length == 0)
+	{
+		// Defend against buffer invalidation
+		return cb(/*EFAULT*/-14);
+	}
 	while(1){
 		if(cnt === off+len){
 			break;
@@ -2407,7 +2417,7 @@ function socketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb)
 				if(cnt>off)
 					return cb(cnt-off);
 				fileData.blockedThread = function(){
-					return socketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb);
+					return httpSocketReadLoop(fileData, fileOffset, buf, off, len, flags, cnt, cb);
 				};
 				return;
 			}
@@ -2437,6 +2447,7 @@ function cheerpNetReadFetchOS(reader,fileData)
 {
 	reader.read()
 		.then(function(result){
+			console.log(result);
 			if(result.done)
 			{
 				fileData.chunks.push(null);
@@ -2456,7 +2467,7 @@ function cheerpNetReadFetchOS(reader,fileData)
 			{
 				var blockedThread=fileData.blockedThread;
 				fileData.blockedThread=null;
-				return blockedThread();
+				blockedThread();
 			}
 			if(!result.done)
 			{
@@ -2596,21 +2607,90 @@ function httpSocketWriteAsync(fileData, fileOffset, buf, off, len, cb)
 	return cb(cnt);
 }
 
-function socketWriteAsync(fileData, fileOffset, buf, off, len, cb)
+function httpSocketConnect(fileData, ipAddr, ipPort)
 {
-	var ret = fileData.data.send(buf.subarray(off, off+len));
-	if(ret == 0)
-		ret = len;
-	return cb(ret);
+	// Pretend that the connection succeeds, we'll try to parse an HTTP session in the write handler.
+	return 0;
 }
 
-function udpSocketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
+async function tcpSocketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
 {
-	debugger;
+	assert(len != 0);
+	while(true)
+	{
+		var ret = fileData.data.recv(buf, off, len);
+		if (ret != cjTailscaleSocket.Eagain)
+			return cb(ret);
+		await fileData.net.canRead(fileData);
+	}
 }
-function udpSocketWriteAsync(fileData, fileOffset, buf, off, len, cb)
+
+function tcpSocketReadAvailable(fileData)
 {
-	debugger;
+	return fileData.data.readAvailable();
+}
+
+function tcpSocketListen(fileData)
+{
+	var ret = fileData.data.listen();
+	return ret == 0? 0 : -1;
+}
+
+function tcpSocketConnect(fileData, ipAddr, ipPort)
+{
+	fileData.data.bind(0);
+	var ret = fileData.data.connect(cjTailscaleParseIp(ipAddr), ipPort);
+	return ret == 0? 0 : -1;
+}
+
+function tcpSocketAccept(fileData)
+{
+	return fileData.data.accept();
+}
+
+function socketBind(fileData, port)
+{
+	return fileData.data.bind(port);
+}
+
+function tcpSocketShutdown(fileData, how)
+{
+	switch(how)
+	{
+		case 0:
+			ret = fileData.data.shutdownRx();
+			break;
+		case 1:
+			ret = fileData.data.shutdownTx();
+			break;
+		case 2:
+			var ret1 = fileData.data.shutdownRx();
+			var ret2 = fileData.data.shutdownTx();
+			ret = ret1 != 0? ret1 : ret2;
+			break;
+	}
+	return ret;
+}
+
+async function tcpSocketWriteAsync(fileData, fileOffset, buf, off, len, cb)
+{
+	while(true)
+	{
+		var ret = fileData.data.send(buf, off, len);
+		if (ret != cjTailscaleSocket.Eagain)
+			return cb(ret);
+		await fileData.net.canWrite(fileData);
+	}
+}
+
+function socketRecv(fileData, fileOffset, buf, off, len, addrInfo)
+{
+	return fileData.data.recv(fileOffset, buf, off, len, addrInfo);
+}
+
+function socketSendTo(fileData, buf, addr, port)
+{
+	return fileData.data.sendto(buf, cjTailscaleParseIp(addr), port);
 }
 
 function socketClose(fileData, cb)
@@ -2618,13 +2698,45 @@ function socketClose(fileData, cb)
 	if (fileData.data)
 	{
 		fileData.data.close();
+		fileData.data.delete();
 		fileData.data = null;
 	}
 	cb();
 }
 
+async function socketCanRead(fileData)
+{
+	if (!fileData.incomingPromise)
+	{
+		fileData.incomingPromise = fileData.data.waitIncoming().then(ret => {
+			fileData.incomingPromise = null;
+			return ret;
+		});
+	}
+	var ret = await fileData.incomingPromise;
+	return ret;
+}
+
+async function socketCanWrite(fileData)
+{
+	if (!fileData.outgoingPromise)
+	{
+		fileData.outgoingPromise = fileData.data.waitOutgoing().then(ret => {
+			fileData.outgoingPromise = null;
+			return ret;
+		});
+	}
+	var ret = await fileData.outgoingPromise;
+	return ret;
+}
+
 function internalSocketReadAsync(fileData, fileOffset, buf, off, len, flags, cb)
 {
+	if(buf.length == 0)
+	{
+		// Defend against buffer invalidation
+		return cb(/*EFAULT*/-14);
+	}
 	if(fileData.chunks.length == 0)
 	{
 		if(fileData.flags & CheerpJFileData.O_NONBLOCK)
@@ -2653,11 +2765,28 @@ function internalSocketWriteAsync(fileData, fileOffset, buf, off, len, cb)
 	if(len > 0)
 	{
 		var socket = fileData.data;
-		var peer = socket.peerSocket;
 		var data = new Uint8Array(buf.subarray(off, off + len));
-		peer.recvCb(data);
+		socket.peerFileData.chunks.push(data);
+		if (socket.peerFileData.blockedThread)
+		{
+			var thread = socket.peerFileData.blockedThread;
+			socket.peerFileData.blockedThread = null;
+			thread();
+		}
 	}
 	return cb(len);
+}
+
+async function internalSocketCanRead(fileData)
+{
+	if(fileData.chunks.length != 0 || fileData.data.acceptQueue.length != 0)
+	{
+		return 0;
+	}
+	let { promise, resolve, reject } = Promise.withResolvers();
+	fileData.blockedThread = resolve;
+	await promise;
+	return 0;
 }
 
 function internalSocketClose(fileData, cb)
@@ -2665,58 +2794,77 @@ function internalSocketClose(fileData, cb)
 	debugger;
 }
 
-function internalSocketRecv(recvCb)
+function internalSocketConnect(fileData, addr, port)
 {
-	this.recvCb = recvCb;
-}
-
-function internalSocketConnect(addr, port, cb)
-{
-	var boundSocket = InternalSocket.boundSockets[port];
-	if(boundSocket)
+	var peer = InternalSocket.boundSockets[port];
+	if(peer && peer.data.listening)
 	{
 		var newSocket = new InternalSocket();
-		this.peerSocket = newSocket;
-		newSocket.peerSocket = this;
-		boundSocket.listenCb(newSocket, null, null, 0);
-		return cb(0);
+		newSocket.peerFileData = fileData;
+		peer.data.acceptQueue.push({socket:newSocket, addr:addr, port:port});
+		if (peer.blockedThread)
+		{
+			var thread = peer.blockedThread;
+			peer.blockedThread = null;
+			thread();
+		}
+		return 0;
 	}
-	return cb(-1);
+	return -1;
+}
+function internalSocketAccept(fileData)
+{
+	if (fileData.data.acceptQueue.length == 0)
+		return null;
+	var s = fileData.data.acceptQueue.shift();
+	return s;
 }
 
-function internalSocketBind(port)
+function internalSocketBind(fileData, port)
 {
 	if(port == 0)
 	{
 		// Used to assign a port, nothing to do
 		return 0;
 	}
-	InternalSocket.boundSockets[port] = this;
+	InternalSocket.boundSockets[port] = fileData;
 	return 0;
 }
 
-function internalSocketListen(listenCb)
+function internalSocketListen(fileData)
 {
-	this.listenCb = listenCb;
+	fileData.data.listening = true;
 }
 
 function InternalSocket()
 {
-	this.recvCb = null;
-	this.listenCb = null;
-	this.peerSocket = null;
+	this.peerFileData = null;
+	this.listening = false;
+	this.acceptQueue = [];
 }
 
-InternalSocket.prototype.recv = internalSocketRecv;
-InternalSocket.prototype.connect = internalSocketConnect;
-InternalSocket.prototype.bind = internalSocketBind;
-InternalSocket.prototype.listen = internalSocketListen;
 InternalSocket.boundSockets = {};
 
-var SocketInodeOps = { readAsync: socketReadAsync, writeAsync: socketWriteAsync, close: socketClose };
-var UdpSocketInodeOps = { readAsync: udpSocketReadAsync, writeAsync: udpSocketWriteAsync, close: socketClose };
-var httpSocketInodeOps = { readAsync: socketReadAsync, writeAsync: httpSocketWriteAsync, close: null };
+function netOpsUnimplemented()
+{
+	debugger;
+}
+function netOpsAlwaysReady()
+{
+	return Promise.resolve(0);
+}
+var TcpSocketInodeOps = { readAsync: tcpSocketReadAsync, writeAsync: tcpSocketWriteAsync, close: socketClose };
+var TcpSocketNetOps = { canWrite: socketCanWrite, canRead: socketCanRead, readAvailable: tcpSocketReadAvailable, recv: netOpsUnimplemented, sendto: netOpsUnimplemented, connect: tcpSocketConnect, listen: tcpSocketListen, accept: tcpSocketAccept, bind: socketBind, shutdown: tcpSocketShutdown };
+
+var UdpSocketInodeOps = { readAsync: netOpsUnimplemented, writeAsync: netOpsUnimplemented, close: socketClose };
+var UdpSocketNetOps = { canWrite: netOpsAlwaysReady, canRead: socketCanRead, readAvailable: netOpsUnimplemented, recv: socketRecv, sendto: socketSendTo, connect: netOpsUnimplemented, listen: netOpsUnimplemented, accept: netOpsUnimplemented, bind: socketBind, shutdown: null };
+
+
+var HttpSocketInodeOps = { readAsync: httpSocketReadAsync, writeAsync: httpSocketWriteAsync, close: null };
+var HttpSocketNetOps = { canWrite: netOpsAlwaysReady, canRead: netOpsUnimplemented, readAvailable: null, recv: netOpsUnimplemented, sendto: netOpsUnimplemented, connect: httpSocketConnect, listen: netOpsUnimplemented, accept: netOpsUnimplemented, bind: netOpsUnimplemented, shutdown: netOpsUnimplemented };
+
 var InternalSocketInodeOps = { readAsync: internalSocketReadAsync, writeAsync: internalSocketWriteAsync, close: internalSocketClose };
+var InternalSocketNetOps = { canWrite: netOpsAlwaysReady, canRead: internalSocketCanRead, readAvailable: null, recv: netOpsUnimplemented, sendto: netOpsUnimplemented, connect: internalSocketConnect, listen: internalSocketListen, accept: internalSocketAccept, bind: internalSocketBind, shutdown: netOpsUnimplemented };
 
 function cheerpOSSocketOpenInternal(fds, mode, socket)
 {
@@ -2725,15 +2873,13 @@ function cheerpOSSocketOpenInternal(fds, mode, socket)
 	if(mode == 2)
 	{
 		fileData.mount = InternalSocketInodeOps;
+		fileData.net = InternalSocketNetOps;
 		fileData.data = socket? socket : new InternalSocket();
-		fileData.data.recv((data) => {
-			fileData.chunks.push(data);
-			if(fileData.blockedThread){
-				var blockedThread=fileData.blockedThread;
-				fileData.blockedThread=null;
-				blockedThread();
-			}
-		});
+		if (fileData.data.peerFileData)
+		{
+			var peer = fileData.data.peerFileData;
+			peer.data.peerFileData = fileData;
+		}
 	}
 	else
 	{
@@ -2741,7 +2887,8 @@ function cheerpOSSocketOpenInternal(fds, mode, socket)
 		{
 			if (mode != 0)
 				return -1;
-			fileData.mount = httpSocketInodeOps;
+			fileData.mount = HttpSocketInodeOps;
+			fileData.net = HttpSocketNetOps;
 			fileData.currRequest = {
 				headers: new Headers(),
 				url: "",
@@ -2759,30 +2906,14 @@ function cheerpOSSocketOpenInternal(fds, mode, socket)
 			if (mode == 1)
 			{
 				fileData.mount = UdpSocketInodeOps;
-				fileData.data = socket? socket : cjTailscaleUdpSocket();
-				fileData.data.recv((data, addr, port) => {
-					fileData.chunks.push({data,addr,port});
-					if(fileData.blockedThread){
-						var blockedThread=fileData.blockedThread;
-						fileData.blockedThread=null;
-						blockedThread();
-					}
-				});
+				fileData.net = UdpSocketNetOps;
+				fileData.data = socket? socket : new cjTailscaleUdpSocket();
 			}
 			else
 			{
-				fileData.mount = SocketInodeOps;
-				fileData.data = socket? socket : cjTailscaleSocket();
-				fileData.data.recv((data) => {
-					// The data is borrowed and we can't use it after this callback
-					var copy = data == null? null : new Uint8Array(data);
-					fileData.chunks.push(copy);
-					if(fileData.blockedThread){
-						var blockedThread=fileData.blockedThread;
-						fileData.blockedThread=null;
-						blockedThread();
-					}
-				});
+				fileData.mount = TcpSocketInodeOps;
+				fileData.net = TcpSocketNetOps;
+				fileData.data = socket? socket : new cjTailscaleSocket();
 			}
 		}
 	}
@@ -2807,27 +2938,12 @@ function cheerpOSSocketShutdown(fds, fd, how, cb)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
 	var ret = 0;
-	if (fileData.data)
-	{
-		switch(how)
-		{
-			case 0:
-				ret = fileData.data.shutdownRx();
-				break;
-			case 1:
-				ret = fileData.data.shutdownTx();
-				break;
-			case 2:
-				var ret1 = fileData.data.shutdownRx();
-				var ret2 = fileData.data.shutdownTx();
-				ret = ret1 != 0? ret1 : ret2;
-				break;
-		}
-	}
-	return cb(ret);
+	if (!fileData.net || !fileData.net.shutdown)
+		return cb(-1);
+	return cb(fileData.net.shutdown(fileData, how));
 }
 
-function cheerpOSPoll(fds, fd, timeout, cb)
+async function cheerpOSPoll(fds, fd, timeout, cb)
 {
 	if(fd < 0)
 		return cb(-1);
@@ -2835,23 +2951,29 @@ function cheerpOSPoll(fds, fd, timeout, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData = fileDesc.fileData;
-	if(fileData.currData || fileData.chunks.length > 0)
-		return cb(1);
+	var canReadPromise;
+	if (fileData.net)
+		canReadPromise = fileData.net.canRead(fileData);
+	else
+		canReadPromise = Promise.resolve(0);
+	var promises = [];
 	var timeoutId = 0;
 	if(timeout >= 0)
 	{
-		var timeoutCb = () => {
-			fileData.blockedThread = null;
-			return cb(0);
-		};
-		timeoutId = setTimeout(timeoutCb, timeout);
+		const timoutPromise = new Promise(resolve => {
+			timeoutId = setTimeout(resolve, timeout);
+		});
+		promises.push(timoutPromise.then(() => {
+			return 0;
+		}));
 	}
-	var pollCb = () => {
-		if(timeoutId)
+	promises.push(canReadPromise.then(() => {
+		if (timeoutId)
 			clearTimeout(timeoutId);
-		return cb(1);
-	};
-	fileData.blockedThread = pollCb;
+		fileData.incomingPromise = null;
+		return 1;
+	}));
+	return cb(await Promise.race(promises))
 }
 
 function cheerpOSReadAvailable(fds, fd, cb)
@@ -2863,6 +2985,10 @@ function cheerpOSReadAvailable(fds, fd, cb)
 		return cb(-1);
 	var tot = 0;
 	var data = fileDesc.fileData;
+	if (data.net && data.net.readAvailable)
+	{
+		return cb(data.net.readAvailable(data));
+	}
 	for(var i = 0; i < data.chunks.length; i++)
 	{
 		if(data.chunks[i])
@@ -2875,7 +3001,7 @@ function cheerpOSReadAvailable(fds, fd, cb)
 	return cb(tot);
 }
 
-function cheerpOSSocketConnect(fds, fd, ipAddr, ipPort, cb)
+async function cheerpOSSocketConnect(fds, fd, ipAddr, ipPort, cb)
 {
 	if(fd < 0)
 		return cb(-1);
@@ -2883,13 +3009,13 @@ function cheerpOSSocketConnect(fds, fd, ipAddr, ipPort, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
-	if(!fileData.data)
-	{
-		// Pretend that the connection succeeds, we'll try to parse an HTTP session in the write handler.
-		return cb(0);
-	}
-	fileData.data.bind(0);
-	fileData.data.connect(ipAddr != "unix" ? cjTailscaleParseIp(ipAddr) : "unix", ipPort, cb);
+	if (!fileData.net)
+		return cb(-1);
+	var ret = fileData.net.connect(fileData, ipAddr, ipPort);
+	if (ret != 0)
+		return cb(-1);
+	var ret = await fileData.net.canWrite(fileData);
+	return cb(ret);
 }
 
 function cheerpOSSocketListen(fds, fd, backlog, cb)
@@ -2900,20 +3026,12 @@ function cheerpOSSocketListen(fds, fd, backlog, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
-	if(!fileData.data)
+	if(!fileData.net)
 		return cb(-1);
-	return cb(fileData.data.listen((socket, addr, port, err) => {
-		assert(err == 0);
-		fileData.chunks.push({socket,addr,port});
-		if(fileData.blockedThread){
-			var blockedThread=fileData.blockedThread;
-			fileData.blockedThread=null;
-			blockedThread();
-		}
-	}));
+	return cb(fileData.net.listen(fileData));
 }
 
-function cheerpOSSocketAccept(fds, fd, cb)
+async function cheerpOSSocketAccept(fds, fd, cb)
 {
 	if(fd < 0)
 		return cb(-1);
@@ -2921,20 +3039,15 @@ function cheerpOSSocketAccept(fds, fd, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
-	if(!fileData.data)
+	if(!fileData.net)
 		return cb(-1);
-	var doRead = () => {
-		var first = fileData.chunks.shift();
-		var newFd = cheerpOSSocketOpenInternal(fds, (first.socket instanceof InternalSocket) ? 2 : 0, first.socket);
-		return cb({newFd,addr:first.addr,port:first.port});
-	};
-	if(fileData.chunks.length != 0)
-	{
-		doRead();
-		return;
+	var newSocket = fileData.net.accept(fileData);
+	while (newSocket == null) {
+		await fileData.net.canRead(fileData);
+		newSocket = fileData.net.accept(fileData);
 	}
-	fileData.blockedThread = doRead;
-	return;
+	var newFd = cheerpOSSocketOpenInternal(fds, (newSocket.socket instanceof InternalSocket) ? 2 : 0, newSocket.socket);
+	return cb({newFd,addr:newSocket.addr,port:newSocket.port});
 }
 
 function cheerpOSSocketBind(fds, fd, localPort, cb)
@@ -2945,12 +3058,12 @@ function cheerpOSSocketBind(fds, fd, localPort, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
-	if(!fileData.data)
+	if(!fileData.net)
 		return cb(-1);
-	return cb(fileData.data.bind(localPort));
+	return cb(fileData.net.bind(fileData, localPort));
 }
 
-function cheerpOSSocketSendTo(fds, fd, data, ipAddr, ipPort, cb)
+async function cheerpOSSocketSendTo(fds, fd, data, ipAddr, ipPort, cb)
 {
 	if(fd < 0)
 		return cb(-1);
@@ -2958,31 +3071,37 @@ function cheerpOSSocketSendTo(fds, fd, data, ipAddr, ipPort, cb)
 	if(fileDesc == null)
 		return cb(-1);
 	var fileData=fileDesc.fileData;
-	if(!fileData.data)
+	if(!fileData.net)
 		return cb(-1);
-	return cb(fileData.data.sendto(data, cjTailscaleParseIp(ipAddr), ipPort));
-}
-function cheerpOSSocketRecv(fds, fd, cb)
-{
-	if(fd < 0)
-		return cb({data:null,addr:0,port:0});
-	var fileDesc=fds[fd];
-	if(fileDesc == null)
-		return cb({data:null,addr:0,port:0});
-	var fileData=fileDesc.fileData;
-	if(!fileData.data)
-		return cb({data:null,addr:0,port:0});
-	var doRead = () => {
-			var first = fileData.chunks.shift();
-			return cb(first);
-	};
-	if(fileData.chunks.length != 0)
-	{
-		doRead();
-		return;
+	var ret = fileData.net.sendto(fileData, data, ipAddr, ipPort);
+	while(ret == cjTailscaleUdpSocket.Eagain) {
+		ret = await fileData.net.canWrite(fileData);
+		if (ret < 0)
+			return cb(-1);
+		ret = fileData.data.sendto(fileData, data, ipAddr, ipPort);
 	}
-	fileData.blockedThread = doRead;
-	return;
+	return cb(ret);
+}
+async function cheerpOSSocketRecv(fds, fd, buf, off, bufLen, cb)
+{
+	var ret = {length:-1,addr:0,port:0};
+	if(fd < 0)
+		return cb(ret);
+	var fileDesc=fds[fd];
+	if(fileDesc == null)
+		return cb(ret);
+	var fileData=fileDesc.fileData;
+	if(!fileData.net)
+		return cb(ret);
+	ret.length = fileData.net.recv(fileData, buf, off, bufLen, ret);
+	while(ret.length == cjTailscaleUdpSocket.Eagain)
+	{
+		ret.length = await fileData.net.canRead(fileData);
+		if (ret.length < 0)
+			return cb(ret);
+		ret.length = fileData.net.recv(fileData, buf, off, bufLen, ret);
+	}
+	return cb(ret);
 }
 
 function cheerpOSResolveHost(hostName, cb)

@@ -18,9 +18,6 @@
   "isolated_storage": true,
   "permissions_policy": {
     "cross-origin-isolated": ["self"],
-    "direct-sockets": ["self"],
-    "controlled-frame": ["self"],
-    "window-management": ["self"],
-    "all-screens-capture": ["self"]
+    "direct-sockets": ["self"]
   }
 }
