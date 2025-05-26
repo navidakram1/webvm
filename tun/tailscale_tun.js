@@ -12,9 +12,6 @@ export const State = {
 	Running: 6,
 };
 
-const {IpStacke}= await ipStackAwait()
-IpStacke.init();
-
 export async function init() {
 	const {IpStack} = await ipStackAwait();
 	IpStack.init();
@@ -106,7 +103,5 @@ export async function init() {
 		logout: () => ipn.logout(),
 		listeners
 	};
-
 }
 
-export const dumpIP = IpStacke.dumpIP;
