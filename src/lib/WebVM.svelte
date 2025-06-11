@@ -19,11 +19,6 @@
 	export let cpuActivityEvents = [];
 	export let diskLatencies = [];
 	export let activityEventsInterval = 0;
-
-	// TCP
-	var server = null;
-	var serverBytes = 0;
-	var serverConnections = 0;
 	
 
 	var term = null;

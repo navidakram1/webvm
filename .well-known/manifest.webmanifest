@@ -18,7 +18,7 @@
   "isolated_storage": true,
   "permissions_policy": {
     "cross-origin-isolated": ["self"],
+    "direct-sockets-private": ["self"],
     "direct-sockets": ["self"]
-    "direct-sockets-private": ["self"]
   }
 }
