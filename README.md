@@ -5,7 +5,7 @@
 
 This repository hosts the source code for [https://webvm.io](https://webvm.io), a Linux virtual machine that runs in your browser.
 
-Try out the new Alpine / Xorg / i3 graphical environment: [https://webvm.io/alpine.html](https://webvm.io/alpine.html)
+Try out the new Alpine / Xorg / i3 graphical environment: https://webvm.io/alpine.html](https://webvm.io/alpine.html)
 
 <img src="/assets/welcome_to_WebVM_alpine_2024.png" width="90%">
 
